@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- First S with curved top decoration -->
+  <g transform="translate(2, 2)">
+    <!-- Curved decoration on top of the first S -->
+    <path d="M0,8 C2,3 7,1 12,3" stroke="black" stroke-width="1.5" fill="none" />
+    <!-- First S -->
+    <path d="M7,5 C4,6 3,8 4,10 C5,12 8,12 10,13 C12,14 12,17 10,18 C8,19 5,18 4,16" stroke="black" stroke-width="1.5" fill="none" />
+  </g>
+  <!-- Second S -->
+  <g transform="translate(16, 13)">
+    <path d="M7,5 C4,6 3,8 4,10 C5,12 8,12 10,13 C12,14 12,17 10,18 C8,19 5,18 4,16" stroke="black" stroke-width="1.5" fill="none" />
+  </g>
+</svg>
