@@ -3970,7 +3970,6 @@ figcaption {
   bottom: auto;
   left: 0%;
   right: auto;
-
 }
 
 .brand-2 {
@@ -4068,9 +4067,25 @@ figcaption {
   font-weight: 400;
   color: #a2a2a2;
 }
+.paragraph-111 {
+  font-family: DM Sans, sans-serif;
+  font-weight: 400;
+  /* color: #a2a2a2; */
+}
 
 .main-h1 {
   color: #a2a2a2;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
+  font-size: 14vh;
+  font-weight: 400;
+  line-height: 16vh;
+  position: relative;
+  overflow: hidden;
+}
+.main-h11 {
+  color: black;
   margin-top: 5px;
   margin-bottom: 0;
   font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
@@ -4095,6 +4110,19 @@ figcaption {
   margin-top: 0;
 }
 
+.main-h11.home {
+  font-size: 25vh;
+  line-height: 22vh;
+  overflow: hidden;
+}
+
+.main-h11.bold {
+  font-weight: 900;
+}
+
+.main-h11.bold.home {
+  margin-top: 0;
+}
 .wrapper-title {
   width: 100%;
   margin-left: 0;
@@ -4129,6 +4157,17 @@ figcaption {
   background-size: cover;
   background-attachment: fixed;
   background-clip: border-box;
+}
+.hero1 {
+  width: 100%;
+  min-height: 100vh;
+  /* mix-blend-mode: normal; */
+  /* justify-content: center; */
+  align-items: flex-end;
+  margin-top: -100vh;
+  padding-bottom: 10vh;
+  display: flex;
+  position: fixed;
 }
 
 .logo-footer {
