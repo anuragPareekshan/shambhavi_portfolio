@@ -3970,6 +3970,7 @@ figcaption {
   bottom: auto;
   left: 0%;
   right: auto;
+
 }
 
 .brand-2 {
@@ -3996,14 +3997,14 @@ figcaption {
 
 .logo-text-2 {
   float: left;
-  color: #323232;
+  color: #a2a2a2;
   text-transform: none;
   margin-top: 3px;
   margin-left: 20px;
   margin-right: 31px;
   font-family: DM Sans, sans-serif;
-  font-size: 25px;
-  font-weight: 400;
+  font-size: 28px;
+  font-weight: 500;
   display: block;
 }
 
@@ -4017,7 +4018,7 @@ figcaption {
 .nav-menu-2 {
   float: right;
   align-items: center;
-  padding-top: 4vh;
+  padding-top: 5.5vh;
   padding-bottom: 2vh;
   display: flex;
 }
@@ -4052,7 +4053,7 @@ figcaption {
 }
 
 .arrow {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -4065,10 +4066,11 @@ figcaption {
 .paragraph-11 {
   font-family: DM Sans, sans-serif;
   font-weight: 400;
+  color: #a2a2a2;
 }
 
 .main-h1 {
-  color: #000;
+  color: #a2a2a2;
   margin-top: 5px;
   margin-bottom: 0;
   font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
@@ -4103,7 +4105,7 @@ figcaption {
 }
 
 .home-subhead {
-  width: 30vw;
+  width: 50vw;
   justify-content: flex-start;
   align-items: center;
   margin-top: 30px;
@@ -4113,13 +4115,20 @@ figcaption {
 .hero {
   width: 100%;
   min-height: 100vh;
-  mix-blend-mode: normal;
-  justify-content: center;
+  /* mix-blend-mode: normal; */
+  /* justify-content: center; */
   align-items: flex-end;
   margin-top: -100vh;
   padding-bottom: 10vh;
   display: flex;
   position: fixed;
+  -webkit-text-fill-color: inherit;
+  background-color: #dcdee0;
+  background-image: url("assets/dp.png");
+  background-position: 60%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-clip: border-box;
 }
 
 .logo-footer {
@@ -4311,7 +4320,7 @@ figcaption {
 }
 
 .project-description-2 {
-  color: #7a7a7a;
+  color: #a2a2a2;
   margin-bottom: 20px;
   font-family: DM Sans, sans-serif;
   font-size: 18px;
