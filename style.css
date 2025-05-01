@@ -4243,7 +4243,7 @@ figcaption {
 .columns-4 {
   -webkit-text-fill-color: inherit;
   background-color: #dcdee0;
-  background-image: url("asessts/image.png");
+  background-image: url("assets/image.png");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -4360,7 +4360,7 @@ figcaption {
 .columns-6 {
   -webkit-text-fill-color: inherit;
   background-color: #dcdee0;
-  background-image: url("asessts/dance.png");
+  background-image: url("assets/dance.png");
   background-position: 100%;
   background-size: cover;
   background-attachment: fixed;
@@ -4372,7 +4372,7 @@ figcaption {
 .columns-7 {
   -webkit-text-fill-color: inherit;
   background-color: #dcdee0;
-  background-image: url("asessts/MUN.png");
+  background-image: url("assets/MUN.png");
   background-position: 50%;
   background-size: cover;
   background-attachment: fixed;
