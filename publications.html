@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <title>Publications</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -11,19 +12,7 @@
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
     <style>
-        .publication-item {
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
 
-        .publication-item:hover {
-            color: #007bff;
-        }
-
-        .publication-item a {
-            text-decoration: none;
-            color: inherit;
-        }
     </style>
 </head>
 
@@ -35,13 +24,13 @@
         </a>
         <nav class="nav-menu-2" role="navigation">
             <a href="about.html" class="link-nav">About</a>
-            <a href="/nrityaamrit" class="link-nav">Nrityaamrit</a>
-            <a href="/clean-tech" class="link-nav">Clean-Tech</a>
+            <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
+            <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
             <a href="/unruly-art" class="link-nav">Unruly-Art</a>
             <a href="/dance" class="link-nav">Dance</a>
             <a href="/portfolio" class="link-nav">Portfolio</a>
-            <a href="/mun" class="link-nav">MUN</a>
-            <a href="/publications" class="link-nav">Publications</a>
+            <a href="mun.html" class="link-nav">MUN</a>
+            <a href="publications.html" class="link-nav">Publications</a>
             <a href="/contact" class="link-nav">Contact</a>
         </nav>
     </div>
@@ -348,28 +337,8 @@
         </div>
     </div>
 
-    <link>
-    <!-- Add the JavaScript at the end of the body -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const publicationItems = document.querySelectorAll('.publication-item');
-            publicationItems.forEach(item => {
-                item.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const numberElement = this.querySelector('.number');
-                    const number = parseInt(numberElement.textContent.replace('.', ''));
-                    const targetId = `publication-${number}`;
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>

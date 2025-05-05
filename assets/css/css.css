@@ -48,9 +48,109 @@ p {
   margin-inline-end: 0px;
   unicode-bidi: isolate;
 }
+.custom-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.gallery-container {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+}
 
+.gallery-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.gallery-image {
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.gallery-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 991px) {
+  .gallery-image {
+    height: 220px;
+  }
+
+  .gallery-heading {
+    font-size: 28px;
+  }
+}
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 30px 0;
+  }
+
+  .gallery-image {
+    height: 180px;
+    margin-bottom: 20px;
+  }
+
+  .gallery-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 479px) {
+  .gallery-container {
+    padding: 20px 0;
+  }
+
+  .gallery-image {
+    height: 140px;
+    margin-bottom: 15px;
+  }
+
+  .gallery-heading {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .gallery-row {
+    margin: 0 -8px;
+  }
+
+  .gallery-col {
+    padding: 0 8px;
+  }
+}
 .about-wrapper {
   background-image: url("../shambhavi.png");
+  background-position: 35% 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.cleanTech-wrapper {
+  background-image: url("../tech.png");
   background-position: 25% 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -107,6 +207,15 @@ p {
   color: #fff;
   font-size: 60px;
   line-height: 70px;
+  margin-bottom: 30px;
+  font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
+  font-weight: 400;
+}
+.nritya-para-text.bolder {
+  width: 45vw;
+  color: #fff;
+  font-size: 30px;
+  line-height: 60px;
   margin-bottom: 30px;
   font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
   font-weight: 400;
@@ -219,6 +328,31 @@ p {
 .about-para-text1 {
   white-space: normal;
   text-decoration: none;
+}
+.google-form-section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+iframe {
+  border-radius: 8px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-description {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #555;
 }
 .sign {
   width: 100%;
@@ -436,6 +570,20 @@ p {
 
 .publication-item a:hover {
   color: black;
+}
+
+.publication-item {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.publication-item:hover {
+  color: #007bff;
+}
+
+.publication-item a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .mainheading h1.sitetitle {
@@ -790,6 +938,10 @@ p {
     width: auto;
     margin-bottom: 0;
   }
+  .nritya-para-text.bolder {
+    width: auto;
+    margin-bottom: 0;
+  }
   .footer-flex {
     flex-wrap: wrap;
   }
@@ -826,6 +978,9 @@ p {
     padding-left: 0;
   }
   .about-para-text.bolder {
+    width: auto;
+  }
+  .nritya-para-text.bolder {
     width: auto;
   }
   .section {
@@ -917,6 +1072,11 @@ p {
     padding: 0;
   }
   .about-para-text.bolder {
+    width: auto;
+    font-size: 10px;
+    line-height: 5px;
+  }
+  .nritya-para-text.bolder {
     width: auto;
     font-size: 25px;
     line-height: 40px;
