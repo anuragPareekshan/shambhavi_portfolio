@@ -11,9 +11,269 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* Gallery styling */
+        .gallery-container {
+            max-width: 100%;
+            overflow-x: hidden;
+            padding: 0 15px;
+        }
+
+        .gallery-filter-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        /* New filter link style instead of buttons */
+        .filter-link {
+            color: #444;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .filter-link:hover {
+            color: #007bff;
+        }
+
+        .filter-link:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #007bff;
+            bottom: 0;
+            left: 0;
+        }
+
+        .filter-link.active {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .filter-link.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #007bff;
+            bottom: 0;
+            left: 0;
+        }
+
+        .image-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item.hide {
+            display: none;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Fullscreen image styles */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow-x: hidden;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        /* Dance performance cards */
+        .youtube-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -15px;
+            /* Create negative margin to offset the padding in columns */
+        }
+
+        .youtube-col {
+            flex: 0 0 33.333%;
+            padding: 15px;
+            /* Apply consistent padding around each column */
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 991px) {
+            .youtube-col {
+                flex: 0 0 50%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .youtube-col {
+                flex: 0 0 100%;
+            }
+        }
+
+        .youtube-card {
+            position: relative;
+            border-radius: 12px;
+            overflow-x: hidden;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+        }
+
+        .youtube-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .youtube-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .youtube-card:hover .play-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .play-icon {
+            font-size: 5rem;
+            color: white;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+            transition: transform 0.3s;
+        }
+
+        .youtube-card:hover .play-icon {
+            transform: scale(1.2);
+        }
+
+        .video-title {
+            margin-top: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Video Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .video-modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 900px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close-video-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div class="navbar" role="banner">
         <a href="/" class="logo">
             <img src="assets/logo.jpeg" alt="Logo" />
@@ -33,99 +293,180 @@
     <div class="dance-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
-                <h2 class="h2 white">Dance</h2>
-                <p class="dance-para-text bolder">A trained Kuchipudi dancer , learning under the world-renowned Guru
+                <h2 class="dance-heading">Dance</h2>
+                <p class="dance-para-text bolder">Trained Kuchipudi Dancer </p>
+            </div>
+        </div>
+    </div>
+    <div class="about-wrapper-info">
+        <div class="about-wrap-content">
+            <h2 class="about-heading">About My Dance</h2>
+            <div class="div-block-16">
+                <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
+                    A trained Kuchipudi dancer , learning under the world-renowned Guru
                     Raja Radha Reddy, I have performed in numerous prestigious shows including International Rajgir
                     Mahotsav and the G20 Youth Connect programme ,
-                    I currently lead Sanskriti’s Cultural Council as President for the current session.I tackled the
-                    challenge of uniting diverse student voices for events like festivals or fusion workshops. How do
-                    you honor tradition while appealing to modern tastes? I’d brainstorm with peers, propose science-art
+                    I currently lead Sanskriti's Cultural Council as President for the current session.
+                    <br>
+                </p>
+                <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
+                    I tackled the challenge of uniting diverse student voices for events like festivals or fusion
+                    workshops. How do
+                    you honor tradition while appealing to modern tastes? I'd brainstorm with peers, propose science-art
                     hybrids like a choreography rooted in physics and execute them. Over months, I developed a sixth
                     sense for balancing creativity with feasibility, turning abstract ideas into celebrations that
-                    resonated. This role reinforced that problem-solving isn’t solitary—it’s about weaving collective
+                    resonated. This role reinforced that problem-solving isn't solitary—it's about weaving collective
                     strengths into solutions.
 
+                    <br />
                 </p>
             </div>
         </div>
     </div>
 
+    <!-- Fullscreen image overlay -->
+    <div id="fullscreen-overlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+        <img id="fullscreen-image" class="fullscreen-image" src="" alt="Fullscreen image">
+    </div>
+
     <div class="gallery-container">
-        <div class="container">
+        <div class="container-fluid">
             <h2 class="gallery-heading">Dance Events</h2>
-            <div class="row gallery-row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/blackwhite.jpg" alt="Banner" class="gallery-image fade-in" />
+
+            <!-- Gallery Filter Links (replaced buttons) -->
+            <div class="gallery-filter-buttons mb-4">
+                <div class="filter-row">
+                    <a class="filter-link active" onclick="filterGallery('all')">All Events</a>
+                    <a class="filter-link" onclick="filterGallery('parampara')">Parampara 2024</a>
+                    <a class="filter-link" onclick="filterGallery('guru')">Photo with Guru</a>
+                    <a class="filter-link" onclick="filterGallery('rajgir')">Rajgir Mahotsav 2022</a>
+                    <a class="filter-link" onclick="filterGallery('nalanda')">Nalanda ruins picture</a>
+                    <a class="filter-link" onclick="filterGallery('natyatarangini')">Natyatarangini Annual Show</a>
+                    <a class="filter-link" onclick="filterGallery('champions')">Champions league 2023</a>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/championsleague.jpg" alt="Discussion" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/classical.jpg" alt="Group" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/dance2.jpg" alt="Speaking" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/duodnace.jpg" alt="Standing" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/groupphoto.jpg" alt="Writing" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/guruphoto.jpg" alt="Speaking" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/kuchhipudi.jpg" alt="Standing" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/prizedistribution.jpg" alt="Writing" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/parampara.jpg" alt="Speaking" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/ruinsdance.jpg" alt="Standing" class="gallery-image fade-in" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/winning.jpg" alt="Writing" class="gallery-image fade-in" />
+                <div class="filter-row">
+                    <a class="filter-link" onclick="filterGallery('g20')">G20connect</a>
+                    <a class="filter-link" onclick="filterGallery('nrityaanjali')">Nrityaanjali International Dance
+                        Festival 2022</a>
+                    <a class="filter-link" onclick="filterGallery('strings')">3rd Strings and Steps festival 2019</a>
+                    <a class="filter-link" onclick="filterGallery('covid')">Covid Dance</a>
+                    <a class="filter-link" onclick="filterGallery('media')">Media Coverage</a>
+                    <a class="filter-link" onclick="filterGallery('blogs')">Kuchipudi Blogs</a>
+                    <a class="filter-link" onclick="filterGallery('school')">School Dance - Physics</a>
                 </div>
             </div>
 
+            <!-- Gallery Images with Categories -->
+            <div class="row gallery-row">
+                <!-- Assigning categories to existing images (you'll replace these with your actual images) -->
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item parampara">
+                    <img src="assets/images/blackwhite.jpg" alt="Parampara 2024" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Parampara 2024</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item champions">
+                    <img src="assets/images/championsleague.jpg" alt="Champions league 2023"
+                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                    <div class="image-caption">Champions league 2023</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item natyatarangini">
+                    <img src="assets/images/classical.jpg" alt="Natyatarangini Annual Show"
+                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                    <div class="image-caption">Natyatarangini Annual Show</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item covid">
+                    <img src="assets/images/dance2.jpg" alt="Covid Dance" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Covid Dance</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item strings">
+                    <img src="assets/images/duodnace.jpg" alt="3rd Strings and Steps festival 2019"
+                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                    <div class="image-caption">3rd Strings and Steps festival 2019</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item g20">
+                    <img src="assets/images/groupphoto.jpg" alt="G20connect" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">G20connect</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item guru">
+                    <img src="assets/images/guruphoto.jpg" alt="Photo with Guru" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Photo with Guru</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item blogs">
+                    <img src="assets/images/kuchhipudi.jpg" alt="Kuchipudi Blogs" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Kuchipudi Blogs</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
+                    <img src="assets/images/prizedistribution.jpg" alt="Media Coverage" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Media Coverage</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item parampara">
+                    <img src="assets/images/parampara.jpg" alt="Parampara 2024" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Parampara 2024</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item nalanda">
+                    <img src="assets/images/ruinsdance.jpg" alt="Nalanda ruins picture" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" />
+                    <div class="image-caption">Nalanda ruins picture</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item nrityaanjali">
+                    <img src="assets/images/winning.jpg" alt="Nrityaanjali International Dance Festival 2022"
+                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                    <div class="image-caption">Nrityaanjali International Dance Festival 2022</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="dance-blogs">
-        <div class="container">
+        <div class="container-fluid">
             <h2 class="gallery-heading">Dance Performances</h2>
             <div class="youtube-row">
                 <div class="youtube-col">
-                    <div class="youtube-card"
-                        onclick="window.open('https://www.youtube.com/watch?v=ynRVSJOZqsY&t=153s&pp=ygUgc2hhbWJoYXZpIHNoYXJtYSBrdWNoaXB1ZGkgZGFuY2U%3D', '_blank')">
+                    <div class="youtube-card" onclick="openVideoModal('ynRVSJOZqsY')">
                         <img src="https://img.youtube.com/vi/ynRVSJOZqsY/maxresdefault.jpg" alt="Kuchipudi Performance">
                         <div class="play-overlay">
                             <i class="fa fa-play-circle play-icon"></i>
                         </div>
                     </div>
+                    <div class="video-title">Kuchipudi Dance - Classical Performance</div>
                 </div>
                 <div class="youtube-col">
-                    <div class="youtube-card"
-                        onclick="window.open('https://www.youtube.com/watch?v=Dd3AyFteHKY&pp=ygUgc2hhbWJoYXZpIHNoYXJtYSBrdWNoaXB1ZGkgZGFuY2XSBwkJfgkBhyohjO8%3D', '_blank')">
+                    <div class="youtube-card" onclick="openVideoModal('Dd3AyFteHKY')">
                         <img src="https://img.youtube.com/vi/Dd3AyFteHKY/maxresdefault.jpg" alt="Kuchipudi Performance">
                         <div class="play-overlay">
                             <i class="fa fa-play-circle play-icon"></i>
                         </div>
                     </div>
+                    <div class="video-title">G20 Youth Connect Performance</div>
                 </div>
                 <div class="youtube-col">
-                    <div class="youtube-card"
-                        onclick="window.open('https://www.youtube.com/watch?v=tgbcjJyiH8o&t=1s&pp=ygUgc2hhbWJoYXZpIHNoYXJtYSBrdWNoaXB1ZGkgZGFuY2U%3D', '_blank')">
+                    <div class="youtube-card" onclick="openVideoModal('tgbcjJyiH8o')">
                         <img src="https://img.youtube.com/vi/tgbcjJyiH8o/maxresdefault.jpg" alt="Kuchipudi Performance">
                         <div class="play-overlay">
                             <i class="fa fa-play-circle play-icon"></i>
                         </div>
                     </div>
+                    <div class="video-title">Rajgir Mahotsav Performance</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-video-modal" onclick="closeVideoModal()">&times;</span>
+            <div class="video-container">
+                <iframe id="youtube-iframe" width="100%" height="100%" src="" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -184,9 +525,121 @@
         </div>
     </div>
 
+    <script>
+        // Function to filter gallery items
+        function filterGallery(category) {
+            const links = document.querySelectorAll('.filter-link');
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent.toLowerCase().includes(category) ||
+                    (category === 'all' && link.textContent.includes('All'))) {
+                    link.classList.add('active');
+                }
+            });
+
+            const items = document.querySelectorAll('.gallery-item');
+            let visibleCount = 0;
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.classList.remove('hide');
+                    visibleCount++;
+                } else {
+                    if (item.classList.contains(category)) {
+                        item.classList.remove('hide');
+                        visibleCount++;
+                    } else {
+                        item.classList.add('hide');
+                    }
+                }
+            });
+
+            // Reset all column classes
+            items.forEach(item => {
+                item.classList.remove('col-lg-3', 'col-lg-4', 'col-lg-6', 'col-lg-12', 'offset-lg-0', 'offset-lg-3', 'offset-lg-4');
+                item.classList.add('col-lg-3');
+            });
+
+            // Adjust layout based on visible items
+            if (category !== 'all') {
+                const visibleItems = document.querySelectorAll(`.gallery-item.${category}`);
+
+                if (visibleCount === 1) {
+                    visibleItems[0].classList.remove('col-lg-3');
+                    visibleItems[0].classList.add('col-lg-6', 'offset-lg-3');
+                }
+                else if (visibleCount === 2) {
+                    visibleItems.forEach(item => {
+                        item.classList.remove('col-lg-3');
+                        item.classList.add('col-lg-4');
+                    });
+                    visibleItems[0].classList.add('offset-lg-2');
+                }
+                else if (visibleCount === 3) {
+                    visibleItems.forEach(item => {
+                        item.classList.remove('col-lg-3');
+                        item.classList.add('col-lg-4');
+                    });
+                }
+            }
+        }
+
+        // Functions for fullscreen image view
+        function openFullscreen(img) {
+            const overlay = document.getElementById('fullscreen-overlay');
+            const fullImg = document.getElementById('fullscreen-image');
+
+            fullImg.src = img.src;
+            fullImg.alt = img.alt;
+            overlay.style.display = 'flex';
+
+            // Prevent scrolling when fullscreen is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreen-overlay').style.display = 'none';
+
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+
+        // Functions for video modal
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+
+            // Set the YouTube embed URL with videoId
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
+            // Display the modal
+            modal.style.display = 'block';
+
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+
+            // Stop video playback by removing the src
+            iframe.src = '';
+
+            // Hide the modal
+            modal.style.display = 'none';
+
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal if clicked outside the content
+        window.onclick = function (event) {
+            const modal = document.getElementById('video-modal');
+            if (event.target === modal) {
+                closeVideoModal();
+            }
+        }
+    </script>
 </body>
 
 </html>
-<style>
-
-</style>
