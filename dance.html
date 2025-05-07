@@ -386,22 +386,7 @@
 </head>
 
 <body style="overflow-x: hidden;">
-    <div class="navbar" role="banner">
-        <a href="index1.html" class="logo">
-            <img src="assets/logo.jpeg" alt="Logo" />
-            <div class="logo-text-2">Shambhavi Sharma</div>
-        </a>
-        <nav class="nav-menu-2" role="navigation">
-            <a href="about.html" class="link-nav">About</a>
-            <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
-            <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
-            <a href="unruly-art.html" class="link-nav">Unruly-Art</a>
-            <a href="dance.html" class="link-nav">Dance Portfolio</a>
-            <a href="mun.html" class="link-nav">MUN</a>
-            <a href="publications.html" class="link-nav">Publications</a>
-            <a href="contact.html" class="link-nav">Contact</a>
-        </nav>
-    </div>
+    <div id="navbar-container"></div>
     <div class="dance-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
@@ -808,6 +793,13 @@
                 }
             });
         });
+    </script>
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
     </script>
 </body>
 
