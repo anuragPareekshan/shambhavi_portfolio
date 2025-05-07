@@ -3,51 +3,57 @@
 
 <head>
     <meta charset="utf-8" />
+  
+
     <title>About Shambhavi Sharma</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
-    <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/about.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="about-body">
+<body class="about-body ">
     <div class="navbar" role="banner">
         <a href="/" class="logo">
             <img src="assets/logo.jpeg" alt="Logo" />
             <div class="logo-text-2">Shambhavi Sharma</div>
         </a>
-        <nav class="nav-menu-2" role="navigation">
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu-2" role="navigation" id="nav-menu">
             <a href="about.html" class="link-nav">About</a>
             <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
             <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
             <a href="unruly-art.html" class="link-nav">Unruly-Art</a>
             <a href="dance.html" class="link-nav">Dance Portfolio</a>
+            <!-- <a href="/portfolio" class="link-nav">Portfolio</a> -->
             <a href="mun.html" class="link-nav">MUN</a>
             <a href="publications.html" class="link-nav">Publications</a>
-            <a href="resume.html" class="link-nav">Resume</a>
+            <a href="/contact.html" class="link-nav">Contact</a>
         </nav>
     </div>
-
     <div class="about-section">
+        
         <div class="about-wrapper">
             <div class="column-3 about">
                 <div class="about-project-info head">
-                    <h2 class="h2 white">About Shambhavi Sharma</h2>
-                    <p class="about-para-text bolder">I &#x27; am Founder of Nrityaamrit , Persuing Long term Internship
-                        at Chakr Innovation and a trained Visual Artist , Kuchipudi dancer
-                        and The Director General of MUN (Modern United Nation).
+                    <h2 class="h2 white ">About Shambhavi</h2>
+                    <p class="about-para-text bolder">Founder of Nrityaamrit 
+                       
                     </p>
                 </div>
             </div>
         </div>
-
         <div class="about-wrapper-center">
             <div class="about-wrapper-info">
                 <div class="about-wrap-content">
-                    <h2 class="about-heading">GET TO KNOW me</h2>
+                    <h2 class="about-heading ">GET TO KNOW me</h2>
                     <div class="div-block-16">
-                        <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
+                        <p class="demo" >
                             As &#x27;a Class 12 science student, my life is a mix of learning, creativity, leadership,
                             and new ideas. My journey began in the science classroom, where equations and experiments
                             ignited my curiosity. <br />
@@ -72,22 +78,22 @@
                         <img src="assets/arrow.svg" class="arrow2" alt="" />
                     </a>
                     <div class="div-block-16">
-                        <h4 class="about-heading4">President, Cultural Council (2025-2026)</h4>
-                        <p class="about-para-text1">
+                        <h4 class="about-heading4 demo">President, Cultural Council (2025-2026)</h4>
+                        <p class="about-para-text1 demo">
                             April (2025) - Present<br />Leading Sanskriti’s Cultural Council, uniting diverse students
                             voices for events like festivals and fusion workshops
                         </p>
                     </div>
                     <div class="div-block-16">
-                        <h4 class="about-heading4">Founder, Nrityaamrit</h4>
-                        <p>
-                            Self Employed<br />An initiative blending classical dance with therapy for healing and
+                        <h4 class="about-heading4 demo">Founder, Nrityaamrit</h4>
+                        <p class="demo">
+                            Self Employed An initiative blending classical dance with therapy for healing and
                             empowerment in hospitals and underprivileged communities.
                         </p>
                     </div>
                     <div class="div-block-16">
-                        <h4 class="about-heading4">Intership, Chakr Innovation</h4>
-                        <p>
+                        <h4 class="about-heading4 demo">Intership, Chakr Innovation</h4>
+                        <p class="demo">
                             May (2024) - Present<br />Contributed to a bio gas urea patent and a research paper at a
                             clean energy tech start up.
 
@@ -97,7 +103,7 @@
             </div>
             <div class="about-wrapper-info">
                 <div class="about-wrap-content">
-                    <h2 class="about-heading6">Contact Us At</h2>
+                    <h2 class="about-heading6 demo">Contact Us At</h2>
                     <div class="div-block-16-copy">
                         <h4 class="about-heading4">Email</h4>
                         <p class="about-para-text1">testing@gmail.com</p>
@@ -110,7 +116,6 @@
             </div>
         </div>
     </div>
-
     <div class="div-block-28" style="margin-top: 4rem;">
         <div class="div-block-26 footer-flex">
             <div class="footer-column">
@@ -165,8 +170,25 @@
             © 2025 Shambhavi Sharma. All rights reserved.
         </div>
     </div>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
 
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 

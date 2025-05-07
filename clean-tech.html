@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
     <style>
@@ -38,6 +38,13 @@
             display: block;
             border-radius: 0;
             box-shadow: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .certificate-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 991px) {
@@ -71,6 +78,148 @@
                 height: 300px;
             }
         }
+
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .fullscreen-image-container {
+            position: relative;
+            width: 90%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1010;
+        }
+
+        .zoom-button {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .zoom-reset {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-reset:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1010;
+        }
+
+        .carousel-control:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1010;
+        }
+
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .fullscreen-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            z-index: 1010;
+        }
     </style>
 </head>
 
@@ -80,7 +229,12 @@
             <img src="assets/logo.jpeg" alt="Logo" />
             <div class="logo-text-2">Shambhavi Sharma</div>
         </a>
-        <nav class="nav-menu-2" role="navigation">
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu-2" role="navigation" id="nav-menu">
             <a href="about.html" class="link-nav">About</a>
             <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
             <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
@@ -88,7 +242,7 @@
             <a href="dance.html" class="link-nav">Dance Portfolio</a>
             <a href="mun.html" class="link-nav">MUN</a>
             <a href="publications.html" class="link-nav">Publications</a>
-            <a href="resume.html" class="link-nav">Resume</a>
+            <a href="/contact" class="link-nav">Contact</a>
         </nav>
     </div>
     <div class="cleanTech-wrapper">
@@ -114,6 +268,33 @@
             </div>
         </div>
     </div>
+
+    <!-- Fullscreen overlay for image viewing -->
+    <div id="fullscreen-overlay" class="fullscreen-overlay">
+        <div class="fullscreen-image-container">
+            <button class="carousel-control carousel-prev" onclick="prevImage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="fullscreen-image" class="fullscreen-image" src="" alt="Fullscreen image">
+            <button class="carousel-control carousel-next" onclick="nextImage()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="zoom-controls">
+                <button class="zoom-button" onclick="zoomIn()">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="zoom-reset" onclick="resetZoom()">Reset</button>
+                <button class="zoom-button" onclick="zoomOut()">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+            </div>
+            <div id="fullscreen-caption" class="fullscreen-caption"></div>
+        </div>
+        <button class="close-button" onclick="closeFullscreen()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <div class="container" id="publication-1">
         <div class="row">
             <div class="col-md-2 col-xs-12">
@@ -124,13 +305,14 @@
                 </div>
                 <div class="certificates-container fade-in">
                     <div class="certificate-item">
-                        <img src="assets/certificate1.png" alt="Certificate 1" />
+                        <img src="assets/certificate1.png" alt="Certificate 1" onclick="openFullscreen(this)"
+                            data-caption="Certificate 1" />
                     </div>
                     <div class="certificate-item">
-                        <img src="assets/certificate2.png" alt="Certificate 2" />
+                        <img src="assets/certificate2.png" alt="Certificate 2" onclick="openFullscreen(this)"
+                            data-caption="Certificate 2" />
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -188,7 +370,110 @@
             © 2025 Shambhavi Sharma. All rights reserved.
         </div>
     </div>
+
+    <script>
+        let currentZoom = 1;
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function zoomIn() {
+            if (currentZoom < 3) {
+                currentZoom += 0.25;
+                applyZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (currentZoom > 0.5) {
+                currentZoom -= 0.25;
+                applyZoom();
+            }
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const image = document.getElementById('fullscreen-image');
+            image.style.transform = `scale(${currentZoom})`;
+        }
+
+        function openFullscreen(img) {
+            resetZoom();
+
+            const visibleImages = Array.from(document.querySelectorAll('.certificate-item img'));
+            currentImages = visibleImages;
+            currentIndex = visibleImages.indexOf(img);
+
+            const overlay = document.getElementById('fullscreen-overlay');
+            const fullImg = document.getElementById('fullscreen-image');
+            const caption = document.getElementById('fullscreen-caption');
+
+            fullImg.src = img.src;
+            fullImg.alt = img.alt;
+            caption.textContent = img.dataset.caption;
+
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreen-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetZoom();
+        }
+
+        function nextImage() {
+            if (currentImages.length <= 1) return;
+
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateFullscreenImage();
+            resetZoom();
+        }
+
+        function prevImage() {
+            if (currentImages.length <= 1) return;
+
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateFullscreenImage();
+            resetZoom();
+        }
+
+        function updateFullscreenImage() {
+            const fullImg = document.getElementById('fullscreen-image');
+            const caption = document.getElementById('fullscreen-caption');
+            const currentImg = currentImages[currentIndex];
+
+            fullImg.src = currentImg.src;
+            fullImg.alt = currentImg.alt;
+            caption.textContent = currentImg.dataset.caption;
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (document.getElementById('fullscreen-overlay').style.display === 'flex') {
+                if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                } else if (e.key === 'Escape') {
+                    closeFullscreen();
+                } else if (e.key === '+' || e.key === '=') {
+                    zoomIn();
+                } else if (e.key === '-' || e.key === '_') {
+                    zoomOut();
+                } else if (e.key === '0') {
+                    resetZoom();
+                }
+            }
+        });
+        document.getElementById('mobile-menu').addEventListener('click', function () {
+            document.getElementById('nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 
 </html>

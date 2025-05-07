@@ -12,7 +12,6 @@
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
     <style>
-        /* Gallery styling */
         .gallery-container {
             max-width: 100%;
             overflow-x: hidden;
@@ -33,6 +32,7 @@
             justify-content: center;
             margin-bottom: 10px;
         }
+
         .filter-link {
             color: #444;
             padding: 8px 16px;
@@ -103,7 +103,6 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
-        /* Fullscreen image styles */
         .fullscreen-overlay {
             display: none;
             position: fixed;
@@ -115,22 +114,142 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
             overflow-x: hidden;
         }
 
-        .fullscreen-image {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
+        .fullscreen-image-container {
+            position: relative;
+            width: 90%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Dance performance cards */
+        .fullscreen-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1010;
+        }
+
+        .zoom-button {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .zoom-reset {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-reset:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1010;
+        }
+
+        .carousel-control:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1010;
+        }
+
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .fullscreen-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            z-index: 1010;
+        }
+
         .youtube-row {
             display: flex;
             flex-wrap: wrap;
             margin: -15px;
-            }
+        }
 
         .youtube-col {
             flex: 0 0 33.333%;
@@ -213,7 +332,6 @@
             color: #333;
         }
 
-        /* Video Modal Styles */
         .video-modal {
             display: none;
             position: fixed;
@@ -282,7 +400,7 @@
             <a href="dance.html" class="link-nav">Dance Portfolio</a>
             <a href="mun.html" class="link-nav">MUN</a>
             <a href="publications.html" class="link-nav">Publications</a>
-            <a href="resume.html" class="link-nav">Resume</a>
+            <a href="contact.html" class="link-nav">Contact</a>
         </nav>
     </div>
     <div class="dance-wrapper">
@@ -319,9 +437,30 @@
         </div>
     </div>
 
-    <!-- Fullscreen image overlay -->
-    <div id="fullscreen-overlay" class="fullscreen-overlay" onclick="closeFullscreen()">
-        <img id="fullscreen-image" class="fullscreen-image" src="" alt="Fullscreen image">
+    <!-- Enhanced Fullscreen image overlay with zoom controls and carousel -->
+    <div id="fullscreen-overlay" class="fullscreen-overlay">
+        <div class="fullscreen-image-container">
+            <button class="carousel-control carousel-prev" onclick="prevImage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="fullscreen-image" class="fullscreen-image" src="" alt="Fullscreen image">
+            <button class="carousel-control carousel-next" onclick="nextImage()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="zoom-controls">
+                <button class="zoom-button" onclick="zoomIn()">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="zoom-reset" onclick="resetZoom()">Reset</button>
+                <button class="zoom-button" onclick="zoomOut()">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+            </div>
+            <div id="fullscreen-caption" class="fullscreen-caption"></div>
+        </div>
+        <button class="close-button" onclick="closeFullscreen()">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
     <div class="gallery-container">
@@ -356,62 +495,66 @@
                 <!-- Assigning categories to existing images (you'll replace these with your actual images) -->
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item parampara">
                     <img src="assets/images/blackwhite.jpg" alt="Parampara 2024" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Parampara 2024" />
                     <div class="image-caption">Parampara 2024</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item champions">
                     <img src="assets/images/championsleague.jpg" alt="Champions league 2023"
-                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                        class="gallery-image fade-in" onclick="openFullscreen(this)"
+                        data-caption="Champions league 2023" />
                     <div class="image-caption">Champions league 2023</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item natyatarangini">
                     <img src="assets/images/classical.jpg" alt="Natyatarangini Annual Show"
-                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                        class="gallery-image fade-in" onclick="openFullscreen(this)"
+                        data-caption="Natyatarangini Annual Show" />
                     <div class="image-caption">Natyatarangini Annual Show</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item covid">
                     <img src="assets/images/dance2.jpg" alt="Covid Dance" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Covid Dance" />
                     <div class="image-caption">Covid Dance</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item strings">
                     <img src="assets/images/duodnace.jpg" alt="3rd Strings and Steps festival 2019"
-                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                        class="gallery-image fade-in" onclick="openFullscreen(this)"
+                        data-caption="3rd Strings and Steps festival 2019" />
                     <div class="image-caption">3rd Strings and Steps festival 2019</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item g20">
                     <img src="assets/images/groupphoto.jpg" alt="G20connect" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="G20connect" />
                     <div class="image-caption">G20connect</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item guru">
                     <img src="assets/images/guruphoto.jpg" alt="Photo with Guru" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Photo with Guru" />
                     <div class="image-caption">Photo with Guru</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item blogs">
                     <img src="assets/images/kuchhipudi.jpg" alt="Kuchipudi Blogs" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Kuchipudi Blogs" />
                     <div class="image-caption">Kuchipudi Blogs</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
                     <img src="assets/images/prizedistribution.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
                     <div class="image-caption">Media Coverage</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item parampara">
                     <img src="assets/images/parampara.jpg" alt="Parampara 2024" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Parampara 2024" />
                     <div class="image-caption">Parampara 2024</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item nalanda">
                     <img src="assets/images/ruinsdance.jpg" alt="Nalanda ruins picture" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" />
+                        onclick="openFullscreen(this)" data-caption="Nalanda ruins picture" />
                     <div class="image-caption">Nalanda ruins picture</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item nrityaanjali">
                     <img src="assets/images/winning.jpg" alt="Nrityaanjali International Dance Festival 2022"
-                        class="gallery-image fade-in" onclick="openFullscreen(this)" />
+                        class="gallery-image fade-in" onclick="openFullscreen(this)"
+                        data-caption="Nrityaanjali International Dance Festival 2022" />
                     <div class="image-caption">Nrityaanjali International Dance Festival 2022</div>
                 </div>
             </div>
@@ -453,7 +596,6 @@
         </div>
     </div>
 
-    <!-- Video Modal -->
     <div id="video-modal" class="video-modal">
         <div class="video-modal-content">
             <span class="close-video-modal" onclick="closeVideoModal()">&times;</span>
@@ -521,7 +663,34 @@
     </div>
 
     <script>
-        // Function to filter gallery items
+        let currentZoom = 1;
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function zoomIn() {
+            if (currentZoom < 3) {
+                currentZoom += 0.25;
+                applyZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (currentZoom > 0.5) {
+                currentZoom -= 0.25;
+                applyZoom();
+            }
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const image = document.getElementById('fullscreen-image');
+            image.style.transform = `scale(${currentZoom})`;
+        }
+
         function filterGallery(category) {
             const links = document.querySelectorAll('.filter-link');
             links.forEach(link => {
@@ -533,66 +702,81 @@
             });
 
             const items = document.querySelectorAll('.gallery-item');
-            let visibleCount = 0;
             items.forEach(item => {
                 if (category === 'all') {
                     item.classList.remove('hide');
-                    visibleCount++;
                 } else {
                     if (item.classList.contains(category)) {
                         item.classList.remove('hide');
-                        visibleCount++;
                     } else {
                         item.classList.add('hide');
                     }
                 }
             });
 
-            // Reset all column classes
-            items.forEach(item => {
-                item.classList.remove('col-lg-3', 'col-lg-4', 'col-lg-6', 'col-lg-12', 'offset-lg-0', 'offset-lg-3', 'offset-lg-4');
-                item.classList.add('col-lg-3');
-            });
-
-            // Adjust layout based on visible items
-            if (category !== 'all') {
-                const visibleItems = document.querySelectorAll(`.gallery-item.${category}`);
-
-                if (visibleCount === 1) {
-                    visibleItems[0].classList.remove('col-lg-3');
-                    visibleItems[0].classList.add('col-lg-6', 'offset-lg-3');
-                }
-                else if (visibleCount === 2) {
-                    visibleItems.forEach(item => {
-                        item.classList.remove('col-lg-3');
-                        item.classList.add('col-lg-4');
-                    });
-                    visibleItems[0].classList.add('offset-lg-2');
-                }
-                else if (visibleCount === 3) {
-                    visibleItems.forEach(item => {
-                        item.classList.remove('col-lg-3');
-                        item.classList.add('col-lg-4');
-                    });
-                }
-            }
+            updateCurrentImages();
         }
+
         function openFullscreen(img) {
             const overlay = document.getElementById('fullscreen-overlay');
             const fullImg = document.getElementById('fullscreen-image');
+            const caption = document.getElementById('fullscreen-caption');
+
             fullImg.src = img.src;
-            fullImg.alt = img.alt;
+            caption.textContent = img.getAttribute('data-caption');
+
             overlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            resetZoom();
+            updateCurrentImages();
+            currentIndex = currentImages.findIndex(image => image.src === img.src);
         }
 
         function closeFullscreen() {
-            document.getElementById('fullscreen-overlay').style.display = 'none';
+            const overlay = document.getElementById('fullscreen-overlay');
+            overlay.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+        function updateCurrentImages() {
+            currentImages = [];
+            const visibleItems = document.querySelectorAll('.gallery-item:not(.hide) img');
+            visibleItems.forEach(img => {
+                currentImages.push({
+                    src: img.src,
+                    caption: img.getAttribute('data-caption')
+                });
+            });
+        }
+
+        function nextImage() {
+            if (currentImages.length <= 1) return;
+
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            const fullImg = document.getElementById('fullscreen-image');
+            const caption = document.getElementById('fullscreen-caption');
+
+            fullImg.src = currentImages[currentIndex].src;
+            caption.textContent = currentImages[currentIndex].caption;
+
+            resetZoom();
+        }
+
+        function prevImage() {
+            if (currentImages.length <= 1) return;
+
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            const fullImg = document.getElementById('fullscreen-image');
+            const caption = document.getElementById('fullscreen-caption');
+
+            fullImg.src = currentImages[currentIndex].src;
+            caption.textContent = currentImages[currentIndex].caption;
+            resetZoom();
+        }
+
         function openVideoModal(videoId) {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('youtube-iframe');
+
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -601,16 +785,30 @@
         function closeVideoModal() {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('youtube-iframe');
+
             iframe.src = '';
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-        window.onclick = function (event) {
-            const modal = document.getElementById('video-modal');
-            if (event.target === modal) {
-                closeVideoModal();
-            }
-        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCurrentImages();
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeFullscreen();
+                    closeVideoModal();
+                }
+
+                const overlay = document.getElementById('fullscreen-overlay');
+                if (overlay.style.display === 'flex') {
+                    if (e.key === 'ArrowRight') {
+                        nextImage();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevImage();
+                    }
+                }
+            });
+        });
     </script>
 </body>
 

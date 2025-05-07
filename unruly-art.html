@@ -132,6 +132,53 @@
             max-width: 100%;
             max-height: 80vh;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        /* Zoom controls */
+        .zoom-controls {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1010;
+        }
+
+        .zoom-button {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .zoom-reset {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-reset:hover {
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
         /* Carousel controls */
@@ -210,7 +257,12 @@
             <img src="assets/logo.jpeg" alt="Logo" />
             <div class="logo-text-2">Shambhavi Sharma</div>
         </a>
-        <nav class="nav-menu-2" role="navigation">
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu-2" role="navigation" id="nav-menu">
             <a href="about.html" class="link-nav">About</a>
             <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
             <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
@@ -218,7 +270,7 @@
             <a href="dance.html" class="link-nav">Dance Portfolio</a>
             <a href="mun.html" class="link-nav">MUN</a>
             <a href="publications.html" class="link-nav">Publications</a>
-            <a href="resume.html" class="link-nav">Resume</a>
+            <a href="contact.html" class="link-nav">Contact</a>
         </nav>
     </div>
     <div class="unruly-wrapper">
@@ -255,6 +307,15 @@
             <button class="carousel-control carousel-next" onclick="nextImage()">
                 <i class="fas fa-chevron-right"></i>
             </button>
+            <div class="zoom-controls">
+                <button class="zoom-button" onclick="zoomIn()">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="zoom-reset" onclick="resetZoom()">Reset</button>
+                <button class="zoom-button" onclick="zoomOut()">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+            </div>
             <div id="fullscreen-caption" class="fullscreen-caption"></div>
         </div>
         <button class="close-button" onclick="closeFullscreen()">
@@ -313,11 +374,11 @@
 
                 <!-- Project Prakash -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
-                    <img src="assets/images/awarded.jpg" alt="Project Prakash" class="gallery-image fade-in"
+                    <img src="assets/newsphotos/projectprakash.jpg" alt="Project Prakash" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
                     <div class="image-caption">Project Prakash Foundation</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
+                <!-- <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
                     <img src="assets/images/art1.jpg" alt="Project Prakash" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
                     <div class="image-caption">Project Prakash Foundation</div>
@@ -326,7 +387,7 @@
                     <img src="assets/images/art2.jpg" alt="Project Prakash" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
                     <div class="image-caption">Project Prakash Foundation</div>
-                </div>
+                </div> -->
 
                 <!-- My Arts -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ">
@@ -389,7 +450,6 @@
                     <h1 class="about-heading">Article</h1>
                 </div>
                 <img src="assets/images/article.jpg" alt="MasterStrokes Invite" class="img-fluid fade-in" />
-                <!-- <img src="assets/certificate2.png" alt="MasterStrokes" class="img-fluid fade-in" /> -->
             </div>
         </div>
     </div>
@@ -450,6 +510,32 @@
     </div>
 
     <script>
+        let currentZoom = 1;
+
+        function zoomIn() {
+            if (currentZoom < 3) { 
+                currentZoom += 0.25;
+                applyZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (currentZoom > 0.5) { 
+                currentZoom -= 0.25;
+                applyZoom();
+            }
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const image = document.getElementById('fullscreen-image');
+            image.style.transform = `scale(${currentZoom})`;
+        }
+
         function filterGallery(category) {
             const links = document.querySelectorAll('.filter-link');
             links.forEach(link => {
@@ -511,8 +597,9 @@
         }
         let currentImages = [];
         let currentIndex = 0;
-
         function openFullscreen(img) {
+            resetZoom();
+
             const visibleImages = Array.from(document.querySelectorAll('.gallery-item:not(.hide) .gallery-image'));
             currentImages = visibleImages;
             currentIndex = visibleImages.indexOf(img);
@@ -526,21 +613,28 @@
             overlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
+
         function closeFullscreen() {
             document.getElementById('fullscreen-overlay').style.display = 'none';
             document.body.style.overflow = 'auto';
+            resetZoom();
         }
+
         function nextImage() {
             if (currentImages.length <= 1) return;
 
             currentIndex = (currentIndex + 1) % currentImages.length;
             updateFullscreenImage();
+            resetZoom();
         }
+
         function prevImage() {
             if (currentImages.length <= 1) return;
             currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
             updateFullscreenImage();
+            resetZoom();
         }
+
         function updateFullscreenImage() {
             const fullImg = document.getElementById('fullscreen-image');
             const caption = document.getElementById('fullscreen-caption');
@@ -550,6 +644,7 @@
             fullImg.alt = currentImg.alt;
             caption.textContent = currentImg.dataset.caption;
         }
+
         document.addEventListener('keydown', function (e) {
             if (document.getElementById('fullscreen-overlay').style.display === 'flex') {
                 if (e.key === 'ArrowRight') {
@@ -558,10 +653,17 @@
                     prevImage();
                 } else if (e.key === 'Escape') {
                     closeFullscreen();
+                } else if (e.key === '+' || e.key === '=') {
+                    zoomIn();
+                } else if (e.key === '-' || e.key === '_') {
+                    zoomOut();
+                } else if (e.key === '0') {
+                    resetZoom();
                 }
             }
         });
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

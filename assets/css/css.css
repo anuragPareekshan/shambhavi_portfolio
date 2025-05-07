@@ -22,11 +22,11 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background-color: #ffffff;
   color: #1a1a1a;
   font-family: "Inter", sans-serif;
-}
+} */
 
 .about-body {
   background-color: #f5f6fa;
@@ -99,7 +99,9 @@ p {
   .gallery-image {
     height: 220px;
   }
-
+  .form-tabs {
+    gap: 20px;
+  }
   .gallery-heading {
     font-size: 28px;
   }
@@ -127,6 +129,25 @@ p {
   .gallery-image {
     height: 140px;
     margin-bottom: 15px;
+  }
+  .form-tabs {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .form-tab {
+    font-size: 16px;
+    padding: 6px 10px;
+    text-align: center;
+  }
+
+  iframe {
+    height: 600px !important;
+  }
+
+  .instagram-container iframe {
+    height: 400px !important;
   }
 
   .gallery-heading {
@@ -184,6 +205,15 @@ p {
   background-attachment: fixed;
   margin: 1rem;
 }
+
+.mun-wrapper {
+  background-image: url("../tech.png");
+  background-position: 35% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 1rem;
+}
 .column-3 {
   border: 1px #000;
   flex: 1;
@@ -191,7 +221,7 @@ p {
 }
 
 .column-3.about {
-  width: 60%;
+  width: 50%;
   height: auto;
   min-height: 70vh;
   color: #fff;
@@ -1431,6 +1461,20 @@ iframe {
     line-height: 41px;
   }
 
+  .form-tabs {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .form-tab {
+    font-size: 20px;
+    padding: 8px 15px;
+  }
+
+  .instagram-container iframe {
+    height: 500px;
+  }
+
   .nav-menu-2 {
     position: absolute;
     top: 70px;
@@ -1462,3 +1506,51 @@ iframe {
   }
 }
 /* New navabar css end  */
+
+/* Form tabs styling */
+.form-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 30px;
+}
+
+.form-tab {
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.form-tab.active {
+  color: #0056b3;
+  border-bottom: 3px solid #0056b3;
+}
+
+.form-tab:hover {
+  color: #0056b3;
+}
+
+.form-content {
+  display: none;
+}
+
+.form-content.active {
+  display: block;
+}
+
+/* Instagram section styling */
+.instagram-section {
+  padding: 40px 20px;
+  margin: 20px auto;
+  text-align: center;
+  max-width: 900px;
+}
+
+.instagram-container {
+  margin-top: 20px;
+  max-width: 100%;
+  overflow: hidden;
+}
