@@ -14,30 +14,8 @@
 </head>
 
 <body class="about-body ">
-    <div class="navbar" role="banner">
-        <a href="/" class="logo">
-            <img src="assets/logo.jpeg" alt="Logo" />
-            <div class="logo-text-2">Shambhavi Sharma</div>
-        </a>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav class="nav-menu-2" role="navigation" id="nav-menu">
-            <a href="about.html" class="link-nav">About</a>
-            <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
-            <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
-            <a href="unruly-art.html" class="link-nav">Unruly-Art</a>
-            <a href="dance.html" class="link-nav">Dance Portfolio</a>
-            <!-- <a href="/portfolio" class="link-nav">Portfolio</a> -->
-            <a href="mun.html" class="link-nav">MUN</a>
-            <a href="publications.html" class="link-nav">Publications</a>
-            <a href="/contact.html" class="link-nav">Contact</a>
-        </nav>
-    </div>
+    <div id="navbar-container"></div>
     <div class="about-section">
-        
         <div class="about-wrapper">
             <div class="column-3 about">
                 <div class="about-project-info head">
@@ -189,6 +167,13 @@
             }
         });
     </script>
+        <script>
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+        </script>
 
 </body>
 
