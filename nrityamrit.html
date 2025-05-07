@@ -11,11 +11,105 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* Form tabs styling */
+        .form-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 30px;
+        }
+
+        .form-tab {
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .form-tab.active {
+            color: #0056b3;
+            border-bottom: 3px solid #0056b3;
+        }
+
+        .form-tab:hover {
+            color: #0056b3;
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        /* Instagram section styling */
+        .instagram-section {
+            padding: 40px 20px;
+            margin: 20px auto;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .instagram-container {
+            margin-top: 20px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 991px) {
+            .form-tabs {
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-tabs {
+                flex-direction: row;
+                gap: 15px;
+            }
+
+            .form-tab {
+                font-size: 20px;
+                padding: 8px 15px;
+            }
+
+            .instagram-container iframe {
+                height: 500px;
+            }
+        }
+
+        @media screen and (max-width: 479px) {
+            .form-tabs {
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .form-tab {
+                font-size: 16px;
+                padding: 6px 10px;
+                text-align: center;
+            }
+
+            iframe {
+                height: 600px !important;
+            }
+
+            .instagram-container iframe {
+                height: 400px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="navbar" role="banner">
-        <a href="/" class="logo">
+        <a href="index1.html" class="logo">
             <img src="assets/logo.jpeg" alt="Logo" />
             <div class="logo-text-2">Shambhavi Sharma</div>
         </a>
@@ -31,43 +125,79 @@
         </nav>
     </div>
 
-    <div class="about-wrapper">
+    <div class="nritya-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
-                <h2 class="h2 white">The Nritya Amrit - Initiative</h2>
-                <p class="nritya-para-text bolder">I &#x27; have founded Nritya Amrit, my initiative to use dance as a
+                <h2 class="dance-heading">The Nritya Amrit - Initiative</h2>
+            </div>
+        </div>
+    </div>
+    <div class="about-wrapper-info">
+        <div class="about-wrap-content">
+            <h2 class="about-heading">Nrityaamrit</h2>
+            <div class="div-block-17">
+                <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
+                    I &#x27; have founded Nritya Amrit, my initiative to use dance as a
                     healing power for the in-house patients at wards of different hospitals and the underprivileged
                     localities. Nrityaamrit is my initiative to blend the transformative power of classical dance with
-                    therapy, creating a unique approach to healing and empowerment. I use grace and rhythm of Kuchipudi
+                    therapy, creating a unique approach to healing and empowerment.<br><br> I use grace and rhythm of
+                    Kuchipudi
                     to connect with patients, underprivileged communities, and diverse audiences, offering emotional
                     well-being, cultural enrichment, and physical rejuvenation.
 
                     My work spans hospitals, old age homes, and community venues. With a commitment to inclusivity, I
                     also teach underprivileged youth, ensuring that the beauty of dance becomes a bridge for opportunity
                     and hope.
+                    <br />
                 </p>
             </div>
         </div>
     </div>
+
     <div class="google-form-section fade-up">
-        <div class="form-title" style="font-family: 'Times New Roman', Times, serif;">
-            <h2 class="about-heading">Come join me in this Noble cause </h2>
+        <div class="form-title" style="text-align: center;">
+            <div class="form-tabs">
+                <div class="form-tab active about-heading" id="join-us-tab">Come Join Us</div>
+                <div class="form-tab about-heading" id="feedback-tab">Feedback</div>
+            </div>
         </div>
         <section>
-            <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSekGXBHJieuujEbzV1vXiO4nY-jr_UzgSJbUShS_Pn4M-T5dA/viewform?embedded=true"
-                width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border: none">
-                Loading…
-            </iframe>
+            <div class="form-content active" id="join-us-form">
+                <iframe
+                    src="https://docs.google.com/forms/d/1bu4ac2wvjCsEGDDUR7zHLhPZtdluz35F_l_ciLlsjNc/viewform?embedded=true"
+                    width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border: none">
+                    Loading…
+                </iframe>
+            </div>
+            <div class="form-content" id="feedback-form">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSekGXBHJieuujEbzV1vXiO4nY-jr_UzgSJbUShS_Pn4M-T5dA/viewform?embedded=true"
+                    width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border: none">
+                    Loading…
+                </iframe>
+            </div>
         </section>
     </div>
+
+    <!-- Instagram Section -->
+    <div class="instagram-section fade-up">
+        <h2 class="about-heading">Visit my Insta Page</h2>
+        <div class="instagram-container">
+            <iframe src="https://www.instagram.com/natyatarangini/embed" width="100%" height="650" frameborder="0"
+                scrolling="no" allowtransparency="true">
+            </iframe>
+        </div>
+    </div>
+
+
+
     <div class="div-block-28" style="margin-top: 2rem;">
         <div class="div-block-26 footer-flex">
             <div class="footer-column">
                 <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
                 <ul>
                     <li><a href="">Natyatarangini Website</a></li>
-                    <li><a href="">Instagram</a></li>
+                    <li><a href="https://www.instagram.com/natyatarangini/">Instagram</a></li>
                     <li><a href="">Twitter/X</a></li>
                     <li><a href="">Gurus Raja Radha Reddy - Instagram</a></li>
                     <li><a href="">Kuchipudi Performance – Rajgir</a></li>
@@ -115,9 +245,30 @@
             © 2025 Shambhavi Sharma. All rights reserved.
         </div>
     </div>
+
+    <script>
+        // JavaScript to handle tab switching
+        document.addEventListener('DOMContentLoaded', function () {
+            const joinUsTab = document.getElementById('join-us-tab');
+            const feedbackTab = document.getElementById('feedback-tab');
+            const joinUsForm = document.getElementById('join-us-form');
+            const feedbackForm = document.getElementById('feedback-form');
+
+            joinUsTab.addEventListener('click', function () {
+                joinUsTab.classList.add('active');
+                feedbackTab.classList.remove('active');
+                joinUsForm.classList.add('active');
+                feedbackForm.classList.remove('active');
+            });
+
+            feedbackTab.addEventListener('click', function () {
+                feedbackTab.classList.add('active');
+                joinUsTab.classList.remove('active');
+                feedbackForm.classList.add('active');
+                joinUsForm.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
-<style>
-
-</style>

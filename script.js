@@ -52,3 +52,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // Adjust on window resize
     window.addEventListener('resize', adjustLayout);
 });
+
+
+//navbar js
+
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
+
+mobileMenu.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+    }
+});
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+    }
+});

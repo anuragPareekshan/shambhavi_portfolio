@@ -33,8 +33,6 @@
             justify-content: center;
             margin-bottom: 10px;
         }
-
-        /* New filter link style instead of buttons */
         .filter-link {
             color: #444;
             padding: 8px 16px;
@@ -132,13 +130,11 @@
             display: flex;
             flex-wrap: wrap;
             margin: -15px;
-            /* Create negative margin to offset the padding in columns */
-        }
+            }
 
         .youtube-col {
             flex: 0 0 33.333%;
             padding: 15px;
-            /* Apply consistent padding around each column */
             box-sizing: border-box;
         }
 
@@ -163,7 +159,6 @@
             transition: transform 0.3s;
             height: 0;
             padding-bottom: 56.25%;
-            /* 16:9 aspect ratio */
         }
 
         .youtube-card:hover {
@@ -275,7 +270,7 @@
 
 <body style="overflow-x: hidden;">
     <div class="navbar" role="banner">
-        <a href="/" class="logo">
+        <a href="index1.html" class="logo">
             <img src="assets/logo.jpeg" alt="Logo" />
             <div class="logo-text-2">Shambhavi Sharma</div>
         </a>
@@ -294,13 +289,13 @@
         <div class="column-3 about">
             <div class="about-project-info head">
                 <h2 class="dance-heading">Dance</h2>
-                <p class="dance-para-text bolder">Trained Kuchipudi Dancer </p>
+                <p class="dance-heading">Trained Kuchipudi Dancer </p>
             </div>
         </div>
     </div>
     <div class="about-wrapper-info">
         <div class="about-wrap-content">
-            <h2 class="about-heading">About My Dance</h2>
+            <h2 class="about-heading">My Dance Profile</h2>
             <div class="div-block-16">
                 <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
                     A trained Kuchipudi dancer , learning under the world-renowned Guru
@@ -582,57 +577,34 @@
                 }
             }
         }
-
-        // Functions for fullscreen image view
         function openFullscreen(img) {
             const overlay = document.getElementById('fullscreen-overlay');
             const fullImg = document.getElementById('fullscreen-image');
-
             fullImg.src = img.src;
             fullImg.alt = img.alt;
             overlay.style.display = 'flex';
-
-            // Prevent scrolling when fullscreen is open
             document.body.style.overflow = 'hidden';
         }
 
         function closeFullscreen() {
             document.getElementById('fullscreen-overlay').style.display = 'none';
-
-            // Re-enable scrolling
             document.body.style.overflow = 'auto';
         }
-
-        // Functions for video modal
         function openVideoModal(videoId) {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('youtube-iframe');
-
-            // Set the YouTube embed URL with videoId
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-
-            // Display the modal
             modal.style.display = 'block';
-
-            // Prevent background scrolling
             document.body.style.overflow = 'hidden';
         }
 
         function closeVideoModal() {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('youtube-iframe');
-
-            // Stop video playback by removing the src
             iframe.src = '';
-
-            // Hide the modal
             modal.style.display = 'none';
-
-            // Re-enable scrolling
             document.body.style.overflow = 'auto';
         }
-
-        // Close modal if clicked outside the content
         window.onclick = function (event) {
             const modal = document.getElementById('video-modal');
             if (event.target === modal) {

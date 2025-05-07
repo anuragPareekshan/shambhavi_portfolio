@@ -30,14 +30,11 @@
             <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
             <a href="/unruly-art" class="link-nav">Unruly-Art</a>
             <a href="dance.html" class="link-nav">Dance Portfolio</a>
-            <!-- <a href="/portfolio" class="link-nav">Portfolio</a> -->
             <a href="mun.html" class="link-nav">MUN</a>
             <a href="publications.html" class="link-nav">Publications</a>
             <a href="/contact" class="link-nav">Contact</a>
         </nav>
     </div>
-    <!-- Hero section with background image -->
-
     <div class="hero">
         <img src="assets/arrow.svg" alt="Scroll Down" class="arrow" />
         <div class="wrapper-title">
@@ -139,26 +136,7 @@
             © 2025 Shambhavi Sharma. All rights reserved.
         </div>
     </div>
-    
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
