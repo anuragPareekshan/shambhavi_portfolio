@@ -7,196 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
-    <!-- <link href="assets/css/home.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <script src="./assets/js/script.js"></script> -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: #1a1a1a;
-            font-family: "Inter", sans-serif;
-        }
-
-        .about-class-link {
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .about-heading3 {
-            display: inline-block;
-        }
-
-        .link-nav {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-size: 0.95rem;
-            padding-bottom: 3px;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-
-        .link-nav:hover,
-        .link-nav.active {
-            border-bottom: 2px solid #1a1a1a;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #333;
-
-        }
-
-        .logo img {
-            height: 45px;
-            margin-right: 10px;
-        }
-
-        .logo-text-2 {
-            font-size: 1.6rem;
-            font-weight: bold;
-
-        }
-
-        .nav-menu-2 {
-            display: flex;
-            gap: 1.5rem;
-
-        }
-
-        .link-nav {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-
-        }
-
-        .link-nav:hover {
-            color: #007bff;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: #333;
-            border-radius: 3px;
-        }
-
-        @media (max-width: 992px) {
-            .nav-menu-2 {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .navbar {
-                padding: 1rem 5%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .arrow2 {
-                margin-left: inherit;
-            }
-
-            .about-heading3 {
-                margin-left: inherit;
-            }
-
-
-            .demo {
-                width: 298px;
-                margin-left: -58px;
-            }
-
-            .h2.white {
-                color: #fff;
-                font-size: 24px;
-                margin-top: 0;
-                font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
-                width: 273px;
-
-
-            }
-
-            .about-heading {
-                color: #4d4d4d;
-                text-transform: uppercase;
-                margin: 0 0 10px;
-                font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
-                font-size: 30px;
-                font-weight: 700;
-                line-height: 41px;
-            }
-
-            .nav-menu-2 {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                flex-direction: column;
-                width: 100%;
-                background-color: #fff;
-                box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-                gap: 0;
-                transform: translateY(-150%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 100;
-            }
-
-            .nav-menu-2.active {
-                transform: translateY(0);
-            }
-
-            .link-nav {
-                width: 100%;
-                padding: 1rem;
-                text-align: center;
-                border-bottom: 1px solid #eee;
-            }
-
-            .link-nav:last-child {
-                border-bottom: none;
-            }
-        }
-    </style>
+    <link rel="shortcut icon" href="assets/images/logo.jpeg" type="image/x-icon" />
+    <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
 </head>
-
-<body>
+<body style="background-color: #f5f6fa">
     <div class="navbar" role="banner" id="navbar">
-        <a href="index1.html" class="logo">
-            <img src="assets/logo.jpeg" alt="Logo" />
+        <a href="index.html" class="logo">
+            <img src="assets/images/logo.jpeg" alt="Logo" />
             <div class="logo-text-2">Shambhavi Sharma</div>
         </a>
         <div class="menu-toggle" id="mobile-menu">
@@ -205,7 +22,7 @@
             <span></span>
         </div>
         <nav class="nav-menu-2" role="navigation" id="nav-menu">
-            <a href="about.html" class="link-nav">About</a>
+            <a href="about.html" class="link-nav">About Me</a>
             <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
             <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
             <a href="unruly-art.html" class="link-nav">Unruly-Art</a>
@@ -215,28 +32,7 @@
             <a href="contact.html" class="link-nav">Contact</a>
         </nav>
     </div>
-
-
-
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 

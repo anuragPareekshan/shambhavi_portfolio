@@ -11,248 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
-    <style>
-        /* Gallery styling */
-        .gallery-container {
-            max-width: 100%;
-            overflow-x: hidden;
-            padding: 0 15px;
-        }
-
-        .gallery-filter-buttons {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .filter-link {
-            color: #444;
-            padding: 8px 16px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .filter-link:hover {
-            color: #007bff;
-        }
-
-        .filter-link:hover::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #007bff;
-            bottom: 0;
-            left: 0;
-        }
-
-        .filter-link.active {
-            color: #007bff;
-            font-weight: 600;
-        }
-
-        .filter-link.active::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #007bff;
-            bottom: 0;
-            left: 0;
-        }
-
-        .image-caption {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .gallery-item {
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item.hide {
-            display: none;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .gallery-image:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Fullscreen image styles */
-        .fullscreen-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-        }
-
-        .fullscreen-image-container {
-            position: relative;
-            width: 90%;
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .fullscreen-image {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        /* Zoom controls */
-        .zoom-controls {
-            position: absolute;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 1010;
-        }
-
-        .zoom-button {
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .zoom-button:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .zoom-reset {
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 5px 10px;
-            font-size: 14px;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .zoom-reset:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Carousel controls */
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1010;
-        }
-
-        .carousel-control:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .carousel-prev {
-            left: 20px;
-        }
-
-        .carousel-next {
-            right: 20px;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1010;
-        }
-
-        .close-button:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .fullscreen-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-            z-index: 1010;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="navbar-container"></div>
+    <div id="navbar"></div>
     <div class="unruly-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
@@ -263,7 +25,7 @@
     </div>
     <div class="about-wrapper-info">
         <div class="about-wrap-content">
-            <h2 class="about-heading" style="margin-top: 2rem;">Unruly-Art (A form of Art) </h2>
+            <h2 class="about-heading" style="margin-top: 2rem;"><u>Unruly-Art</u> (A form of Art) </h2>
             <div class="div-block-17">
                 <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
                     As a trained visual artist at the Delhi College of Art, my works have
@@ -305,7 +67,7 @@
 
     <div class="gallery-container">
         <div class="container-fluid">
-            <h2 class="about-heading" style="margin-top: 2rem;">Unruly Art Gallery</h2>
+            <h2 class="about-heading" style="margin-top: 2rem;">Unruly Art <u>Gallery</u></h2>
 
             <div class="gallery-filter-buttons mb-4">
                 <div class="filter-row">
@@ -354,21 +116,10 @@
 
                 <!-- Project Prakash -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
-                    <img src="assets/newsphotos/projectprakash.jpg" alt="Project Prakash" class="gallery-image fade-in"
+                    <img src="assets/images/projectprakash.jpg" alt="Project Prakash" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
                     <div class="image-caption">Project Prakash Foundation</div>
                 </div>
-                <!-- <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
-                    <img src="assets/images/art1.jpg" alt="Project Prakash" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
-                    <div class="image-caption">Project Prakash Foundation</div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
-                    <img src="assets/images/art2.jpg" alt="Project Prakash" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
-                    <div class="image-caption">Project Prakash Foundation</div>
-                </div> -->
-
                 <!-- My Arts -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ">
                     <img src="assets/images/art3.jpg" alt="My Arts" class="gallery-image fade-in"
@@ -387,270 +138,202 @@
                 </div>
 
                 <!-- Media Coverage -->
-                <!-- <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
-                    <img src="assets/images/article.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
-                    <div class="image-caption">Media Coverage</div>
-                </div> -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
-                    <img src="assets/newsphotos/media1.jpg" alt="Media Coverage" class="gallery-image fade-in"
+                    <img src="assets/images/media1.jpg" alt="Media Coverage" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Media Coverage" />
                     <div class="image-caption">Media Coverage</div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
-                    <img src="assets/newsphotos/media2.jpg" alt="Media Coverage" class="gallery-image fade-in"
+                    <img src="assets/images/media2.jpg" alt="Media Coverage" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Media Coverage" />
                     <div class="image-caption">Media Coverage</div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
-                    <img src="assets/newsphotos/media3.jpg" alt="Media Coverage" class="gallery-image fade-in"
+                    <img src="assets/images/media3.jpg" alt="Media Coverage" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Media Coverage" />
                     <div class="image-caption">Media Coverage</div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
-                    <img src="assets/newsphotos/media4.jpg" alt="Media Coverage" class="gallery-image fade-in"
+                    <img src="assets/images/media4.jpg" alt="Media Coverage" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Media Coverage" />
                     <div class="image-caption">Media Coverage</div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
-                    <img src="assets/newsphotos/media5.jpg" alt="Media Coverage" class="gallery-image fade-in"
+                    <img src="assets/images/media5.jpg" alt="Media Coverage" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Media Coverage" />
                     <div class="image-caption">Media Coverage</div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="footer"></div>
+    <script src="script.js"></script>
+</body>
+<script>
+    let currentZoom = 1;
 
-    <div class="container master-strokes-div" id="publication-1">
-        <div class="row">
-            <div class="col-md-2 col-xs-12">
-            </div>
-            <div class="col-md-8 col-md-offset-2 col-xs-12">
-                <div class="mainheading fade-in">
-                    <h1 class="about-heading">Article</h1>
-                </div>
-                <img src="assets/images/article.jpg" alt="MasterStrokes Invite" class="img-fluid fade-in" />
-            </div>
-        </div>
-    </div>
-
-    <div class="div-block-28" style="margin-top: 1rem;">
-        <div class="div-block-26 footer-flex">
-            <div class="footer-column">
-                <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
-                <ul>
-                    <li><a href="">Natyatarangini Website</a></li>
-                    <li><a href="">Instagram</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">Gurus Raja Radha Reddy - Instagram</a></li>
-                    <li><a href="">Kuchipudi Performance – Rajgir</a></li>
-                    <li><a href="">Natyatarangini Kuchipudi Performance 2022</a></li>
-                    <li><a href="">Parampara Series At Kamani – LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading3">Social Impact &<br> Innovation</h3>
-                <ul>
-                    <li><a href="">Chakr Innovation Website</a></li>
-                    <li><a href="">Facebook</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">LinkedIn</a></li>
-                    <li><a href="">Instagram Project Prakash</a></li>
-                    <li><a href="">Project Prakash Website</a></li>
-                    <li><a href="">Project Prakash – LinkedIn Post</a></li>
-                    <li><a href="">Unruly Arts Website</a></li>
-                    <li><a href="">Unruly Art / Masterstrokes – LinkedIn Post</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading2">Portfolio <br>Highlights</h3>
-                <ul>
-                    <li><a href="">Shrestha Puruskar 2022–23 – Certificate</a></li>
-                    <li><a href="">G20 Participation Photo</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading4">Resume</h3>
-                <ul>
-                    <li><a href="#">Download Resume</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading1">Contact</h3>
-                <ul>
-                    <li><a href="">Email : contactus@gmail.com</a></li>
-                    <li><a href="">LinkedIn : https://LinkedIn.com</a></li>
-                    <li><a href="">Phone : +91 123456789</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-10">
-            © 2025 Shambhavi Sharma. All rights reserved.
-        </div>
-    </div>
-
-    <script>
-        let currentZoom = 1;
-
-        function zoomIn() {
-            if (currentZoom < 3) {
-                currentZoom += 0.25;
-                applyZoom();
-            }
-        }
-
-        function zoomOut() {
-            if (currentZoom > 0.5) {
-                currentZoom -= 0.25;
-                applyZoom();
-            }
-        }
-
-        function resetZoom() {
-            currentZoom = 1;
+    function zoomIn() {
+        if (currentZoom < 3) {
+            currentZoom += 0.25;
             applyZoom();
         }
+    }
 
-        function applyZoom() {
-            const image = document.getElementById('fullscreen-image');
-            image.style.transform = `scale(${currentZoom})`;
+    function zoomOut() {
+        if (currentZoom > 0.5) {
+            currentZoom -= 0.25;
+            applyZoom();
         }
+    }
 
-        function filterGallery(category) {
-            const links = document.querySelectorAll('.filter-link');
-            links.forEach(link => {
-                link.classList.remove('active');
-                if (link.textContent.toLowerCase().includes(category) ||
-                    (category === 'all' && link.textContent.includes('All'))) {
-                    link.classList.add('active');
-                }
-            });
+    function resetZoom() {
+        currentZoom = 1;
+        applyZoom();
+    }
 
-            const items = document.querySelectorAll('.gallery-item');
-            let visibleCount = 0;
-            items.forEach(item => {
-                if (category === 'all') {
+    function applyZoom() {
+        const image = document.getElementById('fullscreen-image');
+        image.style.transform = `scale(${currentZoom})`;
+    }
+
+    function filterGallery(category) {
+        const links = document.querySelectorAll('.filter-link');
+        links.forEach(link => {
+            link.classList.remove('active');
+            if (link.textContent.toLowerCase().includes(category) ||
+                (category === 'all' && link.textContent.includes('All'))) {
+                link.classList.add('active');
+            }
+        });
+
+        const items = document.querySelectorAll('.gallery-item');
+        let visibleCount = 0;
+        items.forEach(item => {
+            if (category === 'all') {
+                item.classList.remove('hide');
+                visibleCount++;
+            } else {
+                if (item.classList.contains(category)) {
                     item.classList.remove('hide');
                     visibleCount++;
                 } else {
-                    if (item.classList.contains(category)) {
-                        item.classList.remove('hide');
-                        visibleCount++;
-                    } else {
-                        item.classList.add('hide');
-                    }
-                }
-            });
-            items.forEach(item => {
-                item.classList.remove('col-lg-3', 'col-lg-4', 'col-lg-6', 'col-lg-12', 'offset-lg-0', 'offset-lg-3', 'offset-lg-4');
-                if (category === 'media' && !item.classList.contains('hide')) {
-                    const mediaItems = document.querySelectorAll('.gallery-item.media:not(.hide)');
-                    const mediaCount = mediaItems.length;
-                    item.classList.add('col-lg-4');
-                    if (mediaCount === 5) {
-                        const mediaArray = Array.from(mediaItems);
-                        const itemIndex = mediaArray.indexOf(item);
-                        if (itemIndex >= 3) {
-                            item.classList.remove('col-lg-4');
-                            item.classList.add('col-lg-6');
-                        }
-                    }
-                } else {
-                    item.classList.add('col-lg-4');
-                }
-            });
-
-            if (category !== 'all') {
-                const visibleItems = document.querySelectorAll(`.gallery-item.${category}`);
-
-                if (visibleCount === 1) {
-                    visibleItems[0].classList.remove('col-lg-4');
-                    visibleItems[0].classList.add('col-lg-6', 'offset-lg-3');
-                }
-                else if (visibleCount === 2) {
-                    visibleItems.forEach(item => {
-                        item.classList.remove('col-lg-4');
-                        item.classList.add('col-lg-6');
-                    });
-                }
-            }
-        }
-        let currentImages = [];
-        let currentIndex = 0;
-        function openFullscreen(img) {
-            resetZoom();
-
-            const visibleImages = Array.from(document.querySelectorAll('.gallery-item:not(.hide) .gallery-image'));
-            currentImages = visibleImages;
-            currentIndex = visibleImages.indexOf(img);
-            const overlay = document.getElementById('fullscreen-overlay');
-            const fullImg = document.getElementById('fullscreen-image');
-            const caption = document.getElementById('fullscreen-caption');
-            fullImg.src = img.src;
-            fullImg.alt = img.alt;
-            caption.textContent = img.dataset.caption;
-
-            overlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeFullscreen() {
-            document.getElementById('fullscreen-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            resetZoom();
-        }
-
-        function nextImage() {
-            if (currentImages.length <= 1) return;
-
-            currentIndex = (currentIndex + 1) % currentImages.length;
-            updateFullscreenImage();
-            resetZoom();
-        }
-
-        function prevImage() {
-            if (currentImages.length <= 1) return;
-            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            updateFullscreenImage();
-            resetZoom();
-        }
-
-        function updateFullscreenImage() {
-            const fullImg = document.getElementById('fullscreen-image');
-            const caption = document.getElementById('fullscreen-caption');
-            const currentImg = currentImages[currentIndex];
-
-            fullImg.src = currentImg.src;
-            fullImg.alt = currentImg.alt;
-            caption.textContent = currentImg.dataset.caption;
-        }
-
-        document.addEventListener('keydown', function (e) {
-            if (document.getElementById('fullscreen-overlay').style.display === 'flex') {
-                if (e.key === 'ArrowRight') {
-                    nextImage();
-                } else if (e.key === 'ArrowLeft') {
-                    prevImage();
-                } else if (e.key === 'Escape') {
-                    closeFullscreen();
-                } else if (e.key === '+' || e.key === '=') {
-                    zoomIn();
-                } else if (e.key === '-' || e.key === '_') {
-                    zoomOut();
-                } else if (e.key === '0') {
-                    resetZoom();
+                    item.classList.add('hide');
                 }
             }
         });
-    </script>
-    <script src="script.js"></script>
-    <script>
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-container').innerHTML = data;
-            });
-    </script>
-</body>
+        items.forEach(item => {
+            item.classList.remove('col-lg-3', 'col-lg-4', 'col-lg-6', 'col-lg-12', 'offset-lg-0', 'offset-lg-3', 'offset-lg-4');
+            if (category === 'media' && !item.classList.contains('hide')) {
+                const mediaItems = document.querySelectorAll('.gallery-item.media:not(.hide)');
+                const mediaCount = mediaItems.length;
+                item.classList.add('col-lg-4');
+                if (mediaCount === 5) {
+                    const mediaArray = Array.from(mediaItems);
+                    const itemIndex = mediaArray.indexOf(item);
+                    if (itemIndex >= 3) {
+                        item.classList.remove('col-lg-4');
+                        item.classList.add('col-lg-6');
+                    }
+                }
+            } else {
+                item.classList.add('col-lg-4');
+            }
+        });
+
+        if (category !== 'all') {
+            const visibleItems = document.querySelectorAll(`.gallery-item.${category}`);
+
+            if (visibleCount === 1) {
+                visibleItems[0].classList.remove('col-lg-4');
+                visibleItems[0].classList.add('col-lg-6', 'offset-lg-3');
+            }
+            else if (visibleCount === 2) {
+                visibleItems.forEach(item => {
+                    item.classList.remove('col-lg-4');
+                    item.classList.add('col-lg-6');
+                });
+            }
+        }
+    }
+    let currentImages = [];
+    let currentIndex = 0;
+    function openFullscreen(img) {
+        resetZoom();
+
+        const visibleImages = Array.from(document.querySelectorAll('.gallery-item:not(.hide) .gallery-image'));
+        currentImages = visibleImages;
+        currentIndex = visibleImages.indexOf(img);
+        const overlay = document.getElementById('fullscreen-overlay');
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+        fullImg.src = img.src;
+        fullImg.alt = img.alt;
+        caption.textContent = img.dataset.caption;
+
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeFullscreen() {
+        document.getElementById('fullscreen-overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        resetZoom();
+    }
+
+    function nextImage() {
+        if (currentImages.length <= 1) return;
+
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateFullscreenImage();
+        resetZoom();
+    }
+
+    function prevImage() {
+        if (currentImages.length <= 1) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateFullscreenImage();
+        resetZoom();
+    }
+
+    function updateFullscreenImage() {
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+        const currentImg = currentImages[currentIndex];
+
+        fullImg.src = currentImg.src;
+        fullImg.alt = currentImg.alt;
+        caption.textContent = currentImg.dataset.caption;
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (document.getElementById('fullscreen-overlay').style.display === 'flex') {
+            if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            } else if (e.key === 'Escape') {
+                closeFullscreen();
+            } else if (e.key === '+' || e.key === '=') {
+                zoomIn();
+            } else if (e.key === '-' || e.key === '_') {
+                zoomOut();
+            } else if (e.key === '0') {
+                resetZoom();
+            }
+        }
+    });
+</script>
 
 </html>
+<script>
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>

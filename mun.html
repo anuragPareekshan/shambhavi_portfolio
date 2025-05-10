@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden;">
 
 <head>
     <meta charset="utf-8" />
@@ -13,8 +13,8 @@
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-    <div id="navbar-container"></div>
+<body style="overflow-x: hidden;">
+    <div id="navbar"></div>
     <div class="mun-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
@@ -24,7 +24,7 @@
     </div>
     <div class="about-wrapper-info">
         <div class="about-wrap-content">
-            <h2 class="about-heading">MUN ( Modern United Nations )</h2>
+            <h2 class="about-heading">MUN (Modern <u>United Nations</u>)</h2>
             <div class="div-block-16">
                 <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
                     Leadership amplified further when I became MUN Director General. The conference was
@@ -41,12 +41,16 @@
             </div>
         </div>
     </div>
-    <div class="about-wrapper-info">
-        <div class="about-wrap-content">
+
+    <div id="singapore-section" class="mun-wrapper-info">
+        <div class="mun-image-container">
+            <img src="assets/images/8.jpg" alt="Singapore MUN" class="img-fluid fade-in"
+                style="height: 400px; width: auto;" onclick="openFullscreen(this)" data-caption="Singapore MUN" />
+        </div>
+        <div class="mun-wrap-content">
             <h2 class="about-heading">Singapore United Nations Model</h2>
-            <div class="div-block-16">
-                <p>
-                    Shambhavi serves as the Director General for INTER SMUN, where she not only leads with vision but
+            <div class="div-block-20">
+                <p> Shambhavi serves as the Director General for INTER SMUN, where she not only leads with vision but
                     also empowers others with purpose. With a deep passion for diplomacy and global affairs, she plays a
                     pivotal role in shaping the conference's strategic direction and ensuring that every committee runs
                     with professionalism.
@@ -54,19 +58,12 @@
                 </p>
             </div>
         </div>
-        <div class="container" id="publication-1">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <img src="assets/8.jpg" alt="MasterStrokes Invite" class="img-fluid fade-in" />
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div class="about-wrapper-info">
-        <div class="about-wrap-content">
-            <h2 class="about-heading">Strawberry Fields MUN – UNHCR</h2>
-            <div class="div-block-16">
+    <div id="strawberry-section" class="mun-wrapper-info">
+        <div class="mun-wrap-content">
+            <h2 class="about-heading">Strawberry Fields MUN–UNHCR</h2>
+            <div class="div-block-20">
                 <p>
                     Shambhavi was selected to represent her school at the prestigious Strawberry Fields MUN 2023, where
                     she served as a delegate in the UNHCR (United Nations High Commissioner for Refugees). Her selection
@@ -76,117 +73,215 @@
                 </p>
             </div>
         </div>
-        <div class="container" id="publication-1">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <img src="assets/clean-tech.png" alt="MasterStrokes Invite" class="img-fluid fade-in" />
-                </div>
-            </div>
+        <div class="mun-image-container">
+            <img src="assets/images/clean-tech.png" alt="Strawberry Fields MUN" class="img-fluid fade-in"
+                onclick="openFullscreen(this)" data-caption="Strawberry Fields MUN" />
         </div>
+    </div>
+    <div id="fullscreen-overlay1" class="fullscreen-overlay1">
+        <div class="fullscreen-image-container">
+            <button class="carousel-control carousel-prev" onclick="prevImage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="fullscreen-image" class="fullscreen-image" src="" alt="Fullscreen image">
+            <button class="carousel-control carousel-next" onclick="nextImage()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="zoom-controls">
+                <button class="zoom-button" onclick="zoomIn()">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="zoom-reset" onclick="resetZoom()">Reset</button>
+                <button class="zoom-button" onclick="zoomOut()">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+            </div>
+            <div id="fullscreen-caption" class="fullscreen-caption"></div>
+        </div>
+        <button class="close-button" onclick="closeFullscreen()">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
     <div class="gallery-container">
-        <div class="container">
-            <h2 class="gallery-heading">MUN Activities</h2>
+        <div class="container-fluid">
+            <h2 class="about-heading" style="margin-top: 2rem;">MUN <u>Activities</u></h2>
             <div class="row gallery-row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/bannerphoto.jpg" alt="Banner" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/bannerphoto.jpg" alt="Banner" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Banner" />
+                    <div class="image-caption">MUN Banner</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/discussion.jpg" alt="Discussion" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/discussion.jpg" alt="Discussion" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Discussion" />
+                    <div class="image-caption">MUN Discussion</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/group.jpg" alt="Group" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/group.jpg" alt="Group" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Group Photo" />
+                    <div class="image-caption">MUN Group Photo</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/speaking.jpg" alt="Speaking" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/speaking.jpg" alt="Speaking" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Speaking" />
+                    <div class="image-caption">MUN Speaking</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/standingphoto.jpg" alt="Standing" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/standingphoto.jpg" alt="Standing" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Standing Photo" />
+                    <div class="image-caption">MUN Standing Photo</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/writing.jpg" alt="Writing" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/writing.jpg" alt="Writing" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Writing Session" />
+                    <div class="image-caption">MUN Writing Session</div>
                 </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/saree.jpg" alt="Saree" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/saree.jpg" alt="Saree" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Traditional Attire" />
+                    <div class="image-caption">MUN Traditional Attire</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/standing.png" alt="Standing Photo" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/standing.png" alt="Standing Photo" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Standing" />
+                    <div class="image-caption">MUN Standing</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col">
-                    <img src="assets/images/discussion2.jpg" alt="Discussion 2" class="gallery-image fade-in" />
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4 gallery-col gallery-item">
+                    <img src="assets/images/discussion2.jpg" alt="Discussion 2" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)" data-caption="MUN Discussion 2" />
+                    <div class="image-caption">MUN Discussion 2</div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="div-block-28" style="margin-top: 4rem;">
-        <div class="div-block-26 footer-flex">
-            <div class="footer-column">
-                <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
-                <ul>
-                    <li><a href="">Natyatarangini Website</a></li>
-                    <li><a href="">Instagram</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">Gurus Raja Radha Reddy - Instagram</a></li>
-                    <li><a href="">Kuchipudi Performance – Rajgir</a></li>
-                    <li><a href="">Natyatarangini Kuchipudi Performance 2022</a></li>
-                    <li><a href="">Parampara Series At Kamani – LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading3">Social Impact &<br> Innovation</h3>
-                <ul>
-                    <li><a href="">Chakr Innovation Website</a></li>
-                    <li><a href="">Facebook</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">LinkedIn</a></li>
-                    <li><a href="">Instagram Project Prakash</a></li>
-                    <li><a href="">Project Prakash Website</a></li>
-                    <li><a href="">Project Prakash – LinkedIn Post</a></li>
-                    <li><a href="">Unruly Arts Website</a></li>
-                    <li><a href="">Unruly Art / Masterstrokes – LinkedIn Post</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading2">Portfolio <br>Highlights</h3>
-                <ul>
-                    <li><a href="">Shrestha Puruskar 2022–23 – Certificate</a></li>
-                    <li><a href="">G20 Participation Photo</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading4">Resume</h3>
-                <ul>
-                    <li><a href="#">Download Resume</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading1">Contact</h3>
-                <ul>
-                    <li><a href="">Email : contactus@gmail.com</a></li>
-                    <li><a href="">LinkedIn : https://LinkedIn.com</a></li>
-                    <li><a href="">Phone : +91 123456789</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-10">
-            © 2025 Shambhavi Sharma. All rights reserved.
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <div id="footer"></div>
     <script src="script.js"></script>
-    <script>
-        fetch('navbar.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('navbar-container').innerHTML = data;
-          });
-      </script>
 </body>
 
 </html>
+<script>
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+    // Image viewing functionality
+    let currentZoom = 1;
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function zoomIn() {
+        if (currentZoom < 3) {
+            currentZoom += 0.25;
+            applyZoom();
+        }
+    }
+
+    function zoomOut() {
+        if (currentZoom > 0.5) {
+            currentZoom -= 0.25;
+            applyZoom();
+        }
+    }
+
+    function resetZoom() {
+        currentZoom = 1;
+        const image = document.getElementById('fullscreen-image');
+        image.style.transform = 'scale(1)';
+        image.style.left = '0';
+        image.style.top = '0';
+    }
+
+    function applyZoom() {
+        const image = document.getElementById('fullscreen-image');
+        image.style.transform = `scale(${currentZoom})`;
+    }
+
+    function openFullscreen(img) {
+        const overlay = document.getElementById('fullscreen-overlay1');
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+
+        fullImg.src = img.src;
+        caption.textContent = img.getAttribute('data-caption');
+
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        resetZoom();
+        updateCurrentImages();
+        currentIndex = currentImages.findIndex(image => image.src === img.src);
+    }
+
+    function closeFullscreen() {
+        const overlay = document.getElementById('fullscreen-overlay1');
+        const fullImg = document.getElementById('fullscreen-image');
+
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+
+        fullImg.style.transform = 'scale(1)';
+        fullImg.style.left = '0';
+        fullImg.style.top = '0';
+    }
+
+    function updateCurrentImages() {
+        currentImages = [];
+        const allImages = document.querySelectorAll('.gallery-image, .mun-image-container img');
+        allImages.forEach(img => {
+            currentImages.push({
+                src: img.src,
+                caption: img.getAttribute('data-caption')
+            });
+        });
+    }
+
+    function nextImage() {
+        if (currentImages.length <= 1) return;
+
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+
+        fullImg.src = currentImages[currentIndex].src;
+        caption.textContent = currentImages[currentIndex].caption;
+
+        resetZoom();
+    }
+
+    function prevImage() {
+        if (currentImages.length <= 1) return;
+
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+
+        fullImg.src = currentImages[currentIndex].src;
+        caption.textContent = currentImages[currentIndex].caption;
+        resetZoom();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCurrentImages();
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+
+            const overlay = document.getElementById('fullscreen-overlay1');
+            if (overlay.style.display === 'flex') {
+                if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
+            }
+        });
+    });
+</script>

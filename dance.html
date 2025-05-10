@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden;">
 
 <head>
     <meta charset="utf-8" />
@@ -11,382 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
-    <style>
-        .gallery-container {
-            max-width: 100%;
-            overflow-x: hidden;
-            padding: 0 15px;
-        }
-
-        .gallery-filter-buttons {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .filter-link {
-            color: #444;
-            padding: 8px 16px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .filter-link:hover {
-            color: #007bff;
-        }
-
-        .filter-link:hover::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #007bff;
-            bottom: 0;
-            left: 0;
-        }
-
-        .filter-link.active {
-            color: #007bff;
-            font-weight: 600;
-        }
-
-        .filter-link.active::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #007bff;
-            bottom: 0;
-            left: 0;
-        }
-
-        .image-caption {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .gallery-item {
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item.hide {
-            display: none;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .gallery-image:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .fullscreen-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-        }
-
-        .fullscreen-image-container {
-            position: relative;
-            width: 90%;
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .fullscreen-image {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .zoom-controls {
-            position: absolute;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 1010;
-        }
-
-        .zoom-button {
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .zoom-button:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .zoom-reset {
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 5px 10px;
-            font-size: 14px;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .zoom-reset:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1010;
-        }
-
-        .carousel-control:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .carousel-prev {
-            left: 20px;
-        }
-
-        .carousel-next {
-            right: 20px;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1010;
-        }
-
-        .close-button:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .fullscreen-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-            z-index: 1010;
-        }
-
-        .youtube-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: -15px;
-        }
-
-        .youtube-col {
-            flex: 0 0 33.333%;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        @media (max-width: 991px) {
-            .youtube-col {
-                flex: 0 0 50%;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .youtube-col {
-                flex: 0 0 100%;
-            }
-        }
-
-        .youtube-card {
-            position: relative;
-            border-radius: 12px;
-            overflow-x: hidden;
-            cursor: pointer;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s;
-            height: 0;
-            padding-bottom: 56.25%;
-        }
-
-        .youtube-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .youtube-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            transition: background-color 0.3s;
-        }
-
-        .youtube-card:hover .play-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .play-icon {
-            font-size: 5rem;
-            color: white;
-            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
-            transition: transform 0.3s;
-        }
-
-        .youtube-card:hover .play-icon {
-            transform: scale(1.2);
-        }
-
-        .video-title {
-            margin-top: 12px;
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-            color: #333;
-        }
-
-        .video-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .video-modal-content {
-            position: relative;
-            margin: auto;
-            padding: 0;
-            width: 90%;
-            max-width: 900px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .close-video-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 2001;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
 </head>
 
-<body style="overflow-x: hidden;">
-    <div id="navbar-container"></div>
+<body style="overflow-x: hidden; overflow-y: hidden;">
+    <div id="navbar"></div>
     <div class="dance-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
@@ -397,7 +25,7 @@
     </div>
     <div class="about-wrapper-info">
         <div class="about-wrap-content">
-            <h2 class="about-heading">My Dance Profile</h2>
+            <h2 class="about-heading">My Dance<u> Profile</u></h2>
             <div class="div-block-16">
                 <p style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">
                     A trained Kuchipudi dancer , learning under the world-renowned Guru
@@ -420,9 +48,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Enhanced Fullscreen image overlay with zoom controls and carousel -->
-    <div id="fullscreen-overlay" class="fullscreen-overlay">
+    <div id="fullscreen-overlay1" class="fullscreen-overlay1">
         <div class="fullscreen-image-container">
             <button class="carousel-control carousel-prev" onclick="prevImage()">
                 <i class="fas fa-chevron-left"></i>
@@ -449,34 +75,29 @@
 
     <div class="gallery-container">
         <div class="container-fluid">
-            <h2 class="gallery-heading">Dance Events</h2>
-
-            <!-- Gallery Filter Links (replaced buttons) -->
+            <h2 class="about-heading" style="margin-top: 2rem;">Dance <u>Events</u></h2>
             <div class="gallery-filter-buttons mb-4">
                 <div class="filter-row">
                     <a class="filter-link active" onclick="filterGallery('all')">All Events</a>
-                    <a class="filter-link" onclick="filterGallery('parampara')">Parampara 2024</a>
+                    <a class="filter-link" onclick="filterGallery('parampara')">Parampara</a>
                     <a class="filter-link" onclick="filterGallery('guru')">Photo with Guru</a>
-                    <a class="filter-link" onclick="filterGallery('rajgir')">Rajgir Mahotsav 2022</a>
-                    <a class="filter-link" onclick="filterGallery('nalanda')">Nalanda ruins picture</a>
-                    <a class="filter-link" onclick="filterGallery('natyatarangini')">Natyatarangini Annual Show</a>
-                    <a class="filter-link" onclick="filterGallery('champions')">Champions league 2023</a>
+                    <a class="filter-link" onclick="filterGallery('rajgir')">Rajgir Mahotsav</a>
+                    <a class="filter-link" onclick="filterGallery('nalanda')">Nalanda</a>
+                    <a class="filter-link" onclick="filterGallery('natyatarangini')">Natyatarangini</a>
+                    <a class="filter-link" onclick="filterGallery('champions')">Champions league</a>
                 </div>
                 <div class="filter-row">
                     <a class="filter-link" onclick="filterGallery('g20')">G20connect</a>
-                    <a class="filter-link" onclick="filterGallery('nrityaanjali')">Nrityaanjali International Dance
+                    <a class="filter-link" onclick="filterGallery('nrityaanjali')">Nrityaanjali
                         Festival 2022</a>
                     <a class="filter-link" onclick="filterGallery('strings')">3rd Strings and Steps festival 2019</a>
                     <a class="filter-link" onclick="filterGallery('covid')">Covid Dance</a>
                     <a class="filter-link" onclick="filterGallery('media')">Media Coverage</a>
-                    <a class="filter-link" onclick="filterGallery('blogs')">Kuchipudi Blogs</a>
-                    <a class="filter-link" onclick="filterGallery('school')">School Dance - Physics</a>
+                    <a class="filter-link" onclick="filterGallery('blogs')">Kuchipudi</a>
+                    <a class="filter-link" onclick="filterGallery('school')">School Dance</a>
                 </div>
             </div>
-
-            <!-- Gallery Images with Categories -->
             <div class="row gallery-row">
-                <!-- Assigning categories to existing images (you'll replace these with your actual images) -->
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item parampara">
                     <img src="assets/images/blackwhite.jpg" alt="Parampara 2024" class="gallery-image fade-in"
                         onclick="openFullscreen(this)" data-caption="Parampara 2024" />
@@ -492,7 +113,7 @@
                     <img src="assets/images/classical.jpg" alt="Natyatarangini Annual Show"
                         class="gallery-image fade-in" onclick="openFullscreen(this)"
                         data-caption="Natyatarangini Annual Show" />
-                    <div class="image-caption">Natyatarangini Annual Show</div>
+                    <div class="image-caption">Natyatarangini</div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4 gallery-col gallery-item covid">
                     <img src="assets/images/dance2.jpg" alt="Covid Dance" class="gallery-image fade-in"
@@ -539,15 +160,14 @@
                     <img src="assets/images/winning.jpg" alt="Nrityaanjali International Dance Festival 2022"
                         class="gallery-image fade-in" onclick="openFullscreen(this)"
                         data-caption="Nrityaanjali International Dance Festival 2022" />
-                    <div class="image-caption">Nrityaanjali International Dance Festival 2022</div>
+                    <div class="image-caption">Nrityaanjali 2022</div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="dance-blogs">
+    <div class="dance-blogs" style="margin-top: 1rem;">
         <div class="container-fluid">
-            <h2 class="gallery-heading">Dance Performances</h2>
+            <h2 class="about-heading">Dance <u>Performances</u></h2>
             <div class="youtube-row">
                 <div class="youtube-col">
                     <div class="youtube-card" onclick="openVideoModal('ynRVSJOZqsY')">
@@ -556,7 +176,7 @@
                             <i class="fa fa-play-circle play-icon"></i>
                         </div>
                     </div>
-                    <div class="video-title">Kuchipudi Dance - Classical Performance</div>
+                    <div class="video-title">Kuchipudi Dance</div>
                 </div>
                 <div class="youtube-col">
                     <div class="youtube-card" onclick="openVideoModal('Dd3AyFteHKY')">
@@ -565,7 +185,7 @@
                             <i class="fa fa-play-circle play-icon"></i>
                         </div>
                     </div>
-                    <div class="video-title">G20 Youth Connect Performance</div>
+                    <div class="video-title">G20 Youth</div>
                 </div>
                 <div class="youtube-col">
                     <div class="youtube-card" onclick="openVideoModal('tgbcjJyiH8o')">
@@ -574,12 +194,11 @@
                             <i class="fa fa-play-circle play-icon"></i>
                         </div>
                     </div>
-                    <div class="video-title">Rajgir Mahotsav Performance</div>
+                    <div class="video-title">Rajgir Mahotsav</div>
                 </div>
             </div>
         </div>
     </div>
-
     <div id="video-modal" class="video-modal">
         <div class="video-modal-content">
             <span class="close-video-modal" onclick="closeVideoModal()">&times;</span>
@@ -591,216 +210,178 @@
             </div>
         </div>
     </div>
-    <div class="div-block-28" style="margin-top: 2rem;">
-        <div class="div-block-26 footer-flex">
-            <div class="footer-column">
-                <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
-                <ul>
-                    <li><a href="">Natyatarangini Website</a></li>
-                    <li><a href="">Instagram</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">Gurus Raja Radha Reddy - Instagram</a></li>
-                    <li><a href="">Kuchipudi Performance – Rajgir</a></li>
-                    <li><a href="">Natyatarangini Kuchipudi Performance 2022</a></li>
-                    <li><a href="">Parampara Series At Kamani – LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading3">Social Impact &<br> Innovation</h3>
-                <ul>
-                    <li><a href="">Chakr Innovation Website</a></li>
-                    <li><a href="">Facebook</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">LinkedIn</a></li>
-                    <li><a href="">Instagram Project Prakash</a></li>
-                    <li><a href="">Project Prakash Website</a></li>
-                    <li><a href="">Project Prakash – LinkedIn Post</a></li>
-                    <li><a href="">Unruly Arts Website</a></li>
-                    <li><a href="">Unruly Art / Masterstrokes – LinkedIn Post</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading2">Portfolio <br>Highlights</h3>
-                <ul>
-                    <li><a href="">Shrestha Puruskar 2022–23 – Certificate</a></li>
-                    <li><a href="">G20 Participation Photo</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading4">Resume</h3>
-                <ul>
-                    <li><a href="#">Download Resume</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading1">Contact</h3>
-                <ul>
-                    <li><a href="">Email : contactus@gmail.com</a></li>
-                    <li><a href="">LinkedIn : https://LinkedIn.com</a></li>
-                    <li><a href="">Phone : +91 123456789</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-10">
-            © 2025 Shambhavi Sharma. All rights reserved.
-        </div>
-    </div>
+    <div id="footer"></div>
 
-    <script>
-        let currentZoom = 1;
-        let currentImages = [];
-        let currentIndex = 0;
-
-        function zoomIn() {
-            if (currentZoom < 3) {
-                currentZoom += 0.25;
-                applyZoom();
-            }
-        }
-
-        function zoomOut() {
-            if (currentZoom > 0.5) {
-                currentZoom -= 0.25;
-                applyZoom();
-            }
-        }
-
-        function resetZoom() {
-            currentZoom = 1;
-            applyZoom();
-        }
-
-        function applyZoom() {
-            const image = document.getElementById('fullscreen-image');
-            image.style.transform = `scale(${currentZoom})`;
-        }
-
-        function filterGallery(category) {
-            const links = document.querySelectorAll('.filter-link');
-            links.forEach(link => {
-                link.classList.remove('active');
-                if (link.textContent.toLowerCase().includes(category) ||
-                    (category === 'all' && link.textContent.includes('All'))) {
-                    link.classList.add('active');
-                }
-            });
-
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach(item => {
-                if (category === 'all') {
-                    item.classList.remove('hide');
-                } else {
-                    if (item.classList.contains(category)) {
-                        item.classList.remove('hide');
-                    } else {
-                        item.classList.add('hide');
-                    }
-                }
-            });
-
-            updateCurrentImages();
-        }
-
-        function openFullscreen(img) {
-            const overlay = document.getElementById('fullscreen-overlay');
-            const fullImg = document.getElementById('fullscreen-image');
-            const caption = document.getElementById('fullscreen-caption');
-
-            fullImg.src = img.src;
-            caption.textContent = img.getAttribute('data-caption');
-
-            overlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            resetZoom();
-            updateCurrentImages();
-            currentIndex = currentImages.findIndex(image => image.src === img.src);
-        }
-
-        function closeFullscreen() {
-            const overlay = document.getElementById('fullscreen-overlay');
-            overlay.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        function updateCurrentImages() {
-            currentImages = [];
-            const visibleItems = document.querySelectorAll('.gallery-item:not(.hide) img');
-            visibleItems.forEach(img => {
-                currentImages.push({
-                    src: img.src,
-                    caption: img.getAttribute('data-caption')
-                });
-            });
-        }
-
-        function nextImage() {
-            if (currentImages.length <= 1) return;
-
-            currentIndex = (currentIndex + 1) % currentImages.length;
-            const fullImg = document.getElementById('fullscreen-image');
-            const caption = document.getElementById('fullscreen-caption');
-
-            fullImg.src = currentImages[currentIndex].src;
-            caption.textContent = currentImages[currentIndex].caption;
-
-            resetZoom();
-        }
-
-        function prevImage() {
-            if (currentImages.length <= 1) return;
-
-            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            const fullImg = document.getElementById('fullscreen-image');
-            const caption = document.getElementById('fullscreen-caption');
-
-            fullImg.src = currentImages[currentIndex].src;
-            caption.textContent = currentImages[currentIndex].caption;
-            resetZoom();
-        }
-
-        function openVideoModal(videoId) {
-            const modal = document.getElementById('video-modal');
-            const iframe = document.getElementById('youtube-iframe');
-
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeVideoModal() {
-            const modal = document.getElementById('video-modal');
-            const iframe = document.getElementById('youtube-iframe');
-
-            iframe.src = '';
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            updateCurrentImages();
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    closeFullscreen();
-                    closeVideoModal();
-                }
-
-                const overlay = document.getElementById('fullscreen-overlay');
-                if (overlay.style.display === 'flex') {
-                    if (e.key === 'ArrowRight') {
-                        nextImage();
-                    } else if (e.key === 'ArrowLeft') {
-                        prevImage();
-                    }
-                }
-            });
-        });
-    </script>
-    <script>
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-container').innerHTML = data;
-            });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
+<script>
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+    let currentZoom = 1;
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function zoomIn() {
+        if (currentZoom < 3) {
+            currentZoom += 0.25;
+            applyZoom();
+        }
+    }
+
+    function zoomOut() {
+        if (currentZoom > 0.5) {
+            currentZoom -= 0.25;
+            applyZoom();
+        }
+    }
+
+    function resetZoom() {
+        currentZoom = 1;
+        const image = document.getElementById('fullscreen-image');
+        image.style.transform = 'scale(1)';
+        image.style.left = '0';
+        image.style.top = '0';
+    }
+
+    function applyZoom() {
+        const image = document.getElementById('fullscreen-image');
+        image.style.transform = `scale(${currentZoom})`;
+    }
+
+    function filterGallery(category) {
+        const links = document.querySelectorAll('.filter-link');
+        links.forEach(link => {
+            link.classList.remove('active');
+            if (link.textContent.toLowerCase().includes(category) ||
+                (category === 'all' && link.textContent.includes('All'))) {
+                link.classList.add('active');
+            }
+        });
+
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach(item => {
+            if (category === 'all') {
+                item.classList.remove('hide');
+            } else {
+                if (item.classList.contains(category)) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            }
+        });
+
+        updateCurrentImages();
+    }
+
+    function openFullscreen(img) {
+        const overlay = document.getElementById('fullscreen-overlay1');
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+
+        fullImg.src = img.src;
+        caption.textContent = img.getAttribute('data-caption');
+
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        resetZoom();
+        updateCurrentImages();
+        currentIndex = currentImages.findIndex(image => image.src === img.src);
+    }
+
+    function closeFullscreen() {
+        const overlay = document.getElementById('fullscreen-overlay1');
+        const fullImg = document.getElementById('fullscreen-image');
+
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'hidden';
+
+        fullImg.style.transform = 'scale(1)';
+        fullImg.style.left = '0';
+        fullImg.style.top = '0';
+    }
+
+
+    function updateCurrentImages() {
+        currentImages = [];
+        const visibleItems = document.querySelectorAll('.gallery-item:not(.hide) img');
+        visibleItems.forEach(img => {
+            currentImages.push({
+                src: img.src,
+                caption: img.getAttribute('data-caption')
+            });
+        });
+    }
+
+    function nextImage() {
+        if (currentImages.length <= 1) return;
+
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+
+        fullImg.src = currentImages[currentIndex].src;
+        caption.textContent = currentImages[currentIndex].caption;
+
+        resetZoom();
+    }
+
+    function prevImage() {
+        if (currentImages.length <= 1) return;
+
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        const fullImg = document.getElementById('fullscreen-image');
+        const caption = document.getElementById('fullscreen-caption');
+
+        fullImg.src = currentImages[currentIndex].src;
+        caption.textContent = currentImages[currentIndex].caption;
+        resetZoom();
+    }
+
+    function openVideoModal(videoId) {
+        const modal = document.getElementById('video-modal');
+        const iframe = document.getElementById('youtube-iframe');
+
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('video-modal');
+        const iframe = document.getElementById('youtube-iframe');
+
+        iframe.src = '';
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCurrentImages();
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeFullscreen();
+                closeVideoModal();
+            }
+
+            const overlay = document.getElementById('fullscreen-overlay1');
+            if (overlay.style.display === 'flex') {
+                if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
+            }
+        });
+    });
+</script>

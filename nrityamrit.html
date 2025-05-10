@@ -14,8 +14,7 @@
 </head>
 
 <body>
-    <div id="navbar-container"></div>
-
+    <div id="navbar"></div>
     <div class="nritya-wrapper">
         <div class="column-3 about">
             <div class="about-project-info head">
@@ -44,7 +43,6 @@
             </div>
         </div>
     </div>
-
     <div class="google-form-section fade-up">
         <div class="form-title" style="text-align: center;">
             <div class="form-tabs">
@@ -62,7 +60,7 @@
             </div>
             <div class="form-content" id="feedback-form">
                 <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSekGXBHJieuujEbzV1vXiO4nY-jr_UzgSJbUShS_Pn4M-T5dA/viewform?embedded=true"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeVVP-JdOVCoW_5LgQMvF7VF1CnuSm27U-iV2VPVE4HxblAOA/viewform"
                     width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border: none">
                     Loading…
                 </iframe>
@@ -70,7 +68,6 @@
         </section>
     </div>
 
-    <!-- Instagram Section -->
     <div class="instagram-section fade-up">
         <h2 class="about-heading"><u>Visit my </u>Insta Page</h2>
         <div class="instagram-container">
@@ -79,94 +76,41 @@
             </iframe>
         </div>
     </div>
-
-
-
-    <div class="div-block-28" style="margin-top: 2rem;">
-        <div class="div-block-26 footer-flex">
-            <div class="footer-column">
-                <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
-                <ul>
-                    <li><a href="">Natyatarangini Website</a></li>
-                    <li><a href="https://www.instagram.com/natyatarangini/">Instagram</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">Gurus Raja Radha Reddy - Instagram</a></li>
-                    <li><a href="">Kuchipudi Performance – Rajgir</a></li>
-                    <li><a href="">Natyatarangini Kuchipudi Performance 2022</a></li>
-                    <li><a href="">Parampara Series At Kamani – LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading3">Social Impact &<br> Innovation</h3>
-                <ul>
-                    <li><a href="">Chakr Innovation Website</a></li>
-                    <li><a href="">Facebook</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">LinkedIn</a></li>
-                    <li><a href="">Instagram Project Prakash</a></li>
-                    <li><a href="">Project Prakash Website</a></li>
-                    <li><a href="">Project Prakash – LinkedIn Post</a></li>
-                    <li><a href="">Unruly Arts Website</a></li>
-                    <li><a href="">Unruly Art / Masterstrokes – LinkedIn Post</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading2">Portfolio <br>Highlights</h3>
-                <ul>
-                    <li><a href="">Shrestha Puruskar 2022–23 – Certificate</a></li>
-                    <li><a href="">G20 Participation Photo</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading4">Resume</h3>
-                <ul>
-                    <li><a href="#">Download Resume</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading1">Contact</h3>
-                <ul>
-                    <li><a href="">Email : contactus@gmail.com</a></li>
-                    <li><a href="">LinkedIn : https://LinkedIn.com</a></li>
-                    <li><a href="">Phone : +91 123456789</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-10">
-            © 2025 Shambhavi Sharma. All rights reserved.
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const joinUsTab = document.getElementById('join-us-tab');
-            const feedbackTab = document.getElementById('feedback-tab');
-            const joinUsForm = document.getElementById('join-us-form');
-            const feedbackForm = document.getElementById('feedback-form');
-
-            joinUsTab.addEventListener('click', function () {
-                joinUsTab.classList.add('active');
-                feedbackTab.classList.remove('active');
-                joinUsForm.classList.add('active');
-                feedbackForm.classList.remove('active');
-            });
-
-            feedbackTab.addEventListener('click', function () {
-                feedbackTab.classList.add('active');
-                joinUsTab.classList.remove('active');
-                feedbackForm.classList.add('active');
-                joinUsForm.classList.remove('active');
-            });
-        });
-    </script>
+    <div id="footer"></div>
     <script src="script.js"></script>
-    <script>
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-container').innerHTML = data;
-            });
-    </script>
 </body>
 
 </html>
+<script>
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const joinUsTab = document.getElementById('join-us-tab');
+        const feedbackTab = document.getElementById('feedback-tab');
+        const joinUsForm = document.getElementById('join-us-form');
+        const feedbackForm = document.getElementById('feedback-form');
+
+        joinUsTab.addEventListener('click', function () {
+            joinUsTab.classList.add('active');
+            feedbackTab.classList.remove('active');
+            joinUsForm.classList.add('active');
+            feedbackForm.classList.remove('active');
+        });
+
+        feedbackTab.addEventListener('click', function () {
+            feedbackTab.classList.add('active');
+            joinUsTab.classList.remove('active');
+            feedbackForm.classList.add('active');
+            joinUsForm.classList.remove('active');
+        });
+    });
+</script>

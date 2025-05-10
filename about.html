@@ -3,35 +3,32 @@
 
 <head>
     <meta charset="utf-8" />
-  
-
     <title>About Shambhavi Sharma</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
-    <link href="assets/css/about.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="about-body ">
-    <div id="navbar-container"></div>
+<body class="about-body">
+    <div id="navbar"></div>
     <div class="about-section">
         <div class="about-wrapper">
             <div class="column-3 about">
                 <div class="about-project-info head">
-                    <h2 class="h2 white ">About Shambhavi</h2>
-                    <p class="about-para-text bolder">Founder of Nrityaamrit 
-                       
+                    <h2 class="dance-heading">About Shambhavi</h2>
+                    <p class="dance-heading">Founder of Nrityaamrit
                     </p>
                 </div>
             </div>
         </div>
+
         <div class="about-wrapper-center">
             <div class="about-wrapper-info">
                 <div class="about-wrap-content">
                     <h2 class="about-heading ">GET TO KNOW me</h2>
                     <div class="div-block-16">
-                        <p class="demo" >
+                        <p class="demo">
                             As &#x27;a Class 12 science student, my life is a mix of learning, creativity, leadership,
                             and new ideas. My journey began in the science classroom, where equations and experiments
                             ignited my curiosity. <br />
@@ -79,102 +76,22 @@
                     </div>
                 </div>
             </div>
-            <div class="about-wrapper-info">
-                <div class="about-wrap-content">
-                    <h2 class="about-heading6 demo">Contact Us At</h2>
-                    <div class="div-block-16-copy">
-                        <h4 class="about-heading4">Email</h4>
-                        <p class="about-para-text1">testing@gmail.com</p>
-                    </div>
-                    <div class="div-block-16-copy">
-                        <h4 class="about-heading4">Phone</h4>
-                        <p class="about-para-text1">+91 (1234567890)</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="div-block-28" style="margin-top: 4rem;">
-        <div class="div-block-26 footer-flex">
-            <div class="footer-column">
-                <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
-                <ul>
-                    <li><a href="">Natyatarangini Website</a></li>
-                    <li><a href="">Instagram</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">Gurus Raja Radha Reddy - Instagram</a></li>
-                    <li><a href="">Kuchipudi Performance – Rajgir</a></li>
-                    <li><a href="">Natyatarangini Kuchipudi Performance 2022</a></li>
-                    <li><a href="">Parampara Series At Kamani – LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading3">Social Impact &<br> Innovation</h3>
-                <ul>
-                    <li><a href="">Chakr Innovation Website</a></li>
-                    <li><a href="">Facebook</a></li>
-                    <li><a href="">Twitter/X</a></li>
-                    <li><a href="">LinkedIn</a></li>
-                    <li><a href="">Instagram Project Prakash</a></li>
-                    <li><a href="">Project Prakash Website</a></li>
-                    <li><a href="">Project Prakash – LinkedIn Post</a></li>
-                    <li><a href="">Unruly Arts Website</a></li>
-                    <li><a href="">Unruly Art / Masterstrokes – LinkedIn Post</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading2">Portfolio <br>Highlights</h3>
-                <ul>
-                    <li><a href="">Shrestha Puruskar 2022–23 – Certificate</a></li>
-                    <li><a href="">G20 Participation Photo</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading4">Resume</h3>
-                <ul>
-                    <li><a href="#">Download Resume</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-heading1">Contact</h3>
-                <ul>
-                    <li><a href="">Email : contactus@gmail.com</a></li>
-                    <li><a href="">LinkedIn : https://LinkedIn.com</a></li>
-                    <li><a href="">Phone : +91 123456789</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-10">
-            © 2025 Shambhavi Sharma. All rights reserved.
-        </div>
-    </div>
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-    </script>
-        <script>
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
-                });
-        </script>
-
+    <div id="footer"></div>
+    <script src="script.js"></script>
 </body>
 
 </html>
+<script>
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>

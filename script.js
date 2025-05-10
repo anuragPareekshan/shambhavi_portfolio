@@ -1,75 +1,61 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const publicationItems = document.querySelectorAll('.publication-item');
-    publicationItems.forEach(item => {
-        item.addEventListener('click', function (e) {
-            e.preventDefault();
-            const numberElement = this.querySelector('.number');
-            const number = parseInt(numberElement.textContent.replace('.', ''));
-            const targetId = `publication-${number}`;
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        if (navbar.children.length === 0) {
+            fetch('navbar.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load navbar');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    navbar.innerHTML = data;
+
+                    initNavbar();
+                })
+                .catch(error => {
+                    console.error('Error loading navbar:', error);
                 });
-            }
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to adjust layout based on screen width
-    function adjustLayout() {
-        const width = window.innerWidth;
-        const galleryImages = document.querySelectorAll('.gallery-image');
-
-        if (width <= 479) {
-            // Extra small devices
-            galleryImages.forEach(img => {
-                img.style.height = '140px';
-            });
-        } else if (width <= 768) {
-            // Small devices
-            galleryImages.forEach(img => {
-                img.style.height = '180px';
-            });
-        } else if (width <= 991) {
-            // Medium devices
-            galleryImages.forEach(img => {
-                img.style.height = '220px';
-            });
         } else {
-            // Large devices
-            galleryImages.forEach(img => {
-                img.style.height = '250px';
-            });
+            initNavbar();
         }
     }
-
-    // Initial adjustment
-    adjustLayout();
-
-    // Adjust on window resize
-    window.addEventListener('resize', adjustLayout);
 });
 
+function initNavbar() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
 
-//navbar js
+    if (mobileMenu && navMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active'); 
+        });
 
-const mobileMenu = document.getElementById('mobile-menu');
-const navMenu = document.getElementById('nav-menu');
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) &&
+                !mobileMenu.contains(event.target) &&
+                navMenu.classList.contains('active')) {
 
-mobileMenu.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
 
-document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        const navLinks = document.querySelectorAll('.link-nav');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
     }
-});
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-    }
-});
+}
