@@ -2,27 +2,82 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Unruly-Art</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Shambhavi Sharma – Science Student, Cultural Leader & Founder of Nrityaamrit</title>
+    <meta name="description"
+        content="Shambhavi Sharma, a Class 12 science student, cultural council president, and founder of Nrityaamrit, blending science, leadership, and art, MUN Director. Discover Shambhavi Sharma's unique blend of initiative to use dance as a healing power for the in-house patients">
+    <meta name="keywords"
+        content="Shambhavi Sharma, Nrityaamrit, science student, cultural council president, Indian classical dance, youth leadership, school student, student leader, young achiever, Shambhavi Sharma portfolio, data science, sustainability, Kuchipudi dance, MUN Director">
+    <!-- Robots Tag -->
+    <meta name="robots" content="index, follow">
+    <!-- Charset -->
+    <meta charset="UTF-8">
+    <!-- Viewport for Mobile Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title"
+        content="Shambhavi Sharma – Science Student & Cultural Leader, MUN Director and founder of Nrityaamrit">
+    <meta property="og:description"
+        content="Discover Shambhavi Sharma's unique blend of initiative to use dance as a healing power for the in-house patients, artistic expression, and leadership through her journey as a Class 12 student and founder of Nrityaamrit.">
+    <meta property="og:url" content="https://www.shambhavisharma.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.shambhavisharma.com/assets/images/profile.jpg">
+    <meta property="og:site_name" content="Shambhavi Sharma">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="Shambhavi Sharma – Science Student & Cultural Leader, MUN Director and founder of Nrityaamrit">
+    <meta name="twitter:description"
+        content="Discover Shambhavi Sharma's unique blend of initiative to use dance as a healing power for the in-house patients, artistic expression, and leadership through her journey as a Class 12 student and founder of Nrityaamrit.">
+    <meta name="twitter:image" content="https://www.shambhavisharma.com/assets/images/profile.jpg">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/logo.jpeg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" />
+    <link rel="shortcut icon" href="assets/images/logo.jpeg" type="image/x-icon" />
     <link href="assets/css/css.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <div id="navbar"></div>
-    <div class="unruly-wrapper">
-        <div class="column-3 about">
-            <div class="about-project-info head">
-                <h2 class="dance-heading">Unruly-Art</h2>
-                <p class="dance-heading">By Shambhavi</p>
+    <div class="navbar" role="banner" id="navbar" style="background-color: #f5f6fa;">
+        <a href="index.html" class="logo">
+            <div class="logo-image">
+
+                <img src="assets/images/logot.png" alt="Logo" />
+            </div>
+            <div class=" demo_text">Shambhavi Sharma</div>
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu-2" role="navigation" id="nav-menu">
+            <a href="about.html" class="link-nav">About Me</a>
+            <a href="nrityamrit.html" class="link-nav">Nrityaamrit</a>
+            <a href="clean-tech.html" class="link-nav">Clean-Tech</a>
+            <a href="unruly-art.html" class="link-nav">Unruly-Art</a>
+            <a href="dance.html" class="link-nav">Dance Portfolio</a>
+            <a href="mun.html" class="link-nav">MUN</a>
+            <a href="publications.html" class="link-nav">Publications</a>
+            <a href="contact.html" class="link-nav">Contact</a>
+        </nav>
+    </div>
+    <section class="about-hero-section">
+        <div class="about-hero-container">
+            <div class="about-hero-image">
+                <img src="./assets/images/ihc.jpg" alt="Unruly-Art Profile" />
+            </div>
+            <div class="about-hero-text">
+                <h1 class="about-hero-title">Unruly-Art</h1>
+                <h1 class="about-hero-title">By Shambhavi</h1>
             </div>
         </div>
-    </div>
+    </section>
     <div class="about-wrapper-info">
         <div class="about-wrap-content">
             <h2 class="about-heading" style="margin-top: 2rem;"><u>Unruly-Art</u> (A form of Art) </h2>
@@ -72,7 +127,7 @@
             <div class="gallery-filter-buttons mb-4">
                 <div class="filter-row">
                     <a class="filter-link active" onclick="filterGallery('all')">All Events</a>
-                    <a class="filter-link" onclick="filterGallery('article')">Unruly Art Article</a>
+                    <!-- <a class="filter-link" onclick="filterGallery('article')">Unruly Art Article</a> -->
                     <a class="filter-link" onclick="filterGallery('janpath')">Exhibition at Janpath</a>
                     <a class="filter-link" onclick="filterGallery('ihc')">Exhibition at IHC</a>
                     <a class="filter-link" onclick="filterGallery('prakash')">Project Prakash</a>
@@ -81,259 +136,184 @@
                 </div>
             </div>
             <div class="row gallery-row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item myarts">
-                    <img src="assets/images/artphoto.jpg" alt="Unruly Art Article" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Unruly Art Article" />
-                    <div class="image-caption">Unruly Art Article</div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
+                    <img src="assets/images/article.jpg" alt="Project Prakash" class="gallery-image fade-in"
+                        onclick="openFullscreen(this)"="Project Prakash" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item myarts">
                     <img src="assets/images/art1.jpg" alt="Exhibition at Janpath" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Exhibition at Janpath" />
-                    <div class="image-caption">Exhibition at Janpath</div>
+                        onclick="openFullscreen(this)"="Exhibition at Janpath" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item myarts">
                     <img src="assets/images/art2.jpg" alt="Exhibition at Janpath" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Exhibition at Janpath" />
-                    <div class="image-caption">Exhibition at Janpath</div>
+                        onclick="openFullscreen(this)"="Exhibition at Janpath" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item janpath">
                     <img src="assets/images/art3.jpg" alt="Exhibition at Janpath" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Exhibition at Janpath" />
-                    <div class="image-caption">Exhibition at Janpath</div>
+                        onclick="openFullscreen(this)"="Exhibition at Janpath" />
                 </div>
-
-                <!-- Exhibition at IHC -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ihc">
                     <img src="assets/images/ihc.jpg" alt="Exhibition at IHC" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Exhibition at India Habitat Centre" />
-                    <div class="image-caption">Exhibition at India Habitat Centre</div>
+                        onclick="openFullscreen(this)"="Exhibition at India Habitat Centre" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ihc">
                     <img src="assets/images/artstanding.jpg" alt="Exhibition at IHC" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Exhibition at India Habitat Centre" />
-                    <div class="image-caption">Exhibition at India Habitat Centre</div>
+                        onclick="openFullscreen(this)"="Exhibition at India Habitat Centre" />
                 </div>
 
-                <!-- Project Prakash -->
+
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item prakash">
                     <img src="assets/images/projectprakash.jpg" alt="Project Prakash" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Project Prakash Foundation" />
-                    <div class="image-caption">Project Prakash Foundation</div>
+                        onclick="openFullscreen(this)"="Project Prakash Foundation" />
                 </div>
-                <!-- My Arts -->
+
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ">
                     <img src="assets/images/art3.jpg" alt="My Arts" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="My Art Exhibition" />
-                    <div class="image-caption">My Art Exhibition</div>
+                        onclick="openFullscreen(this)"="My Art Exhibition" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ">
                     <img src="assets/images/artstanding.jpg" alt="My Arts" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="My Art Exhibition" />
-                    <div class="image-caption">My Art Exhibition</div>
+                        onclick="openFullscreen(this)"="My Art Exhibition" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item ">
                     <img src="assets/images/ihc.jpg" alt="My Arts" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="My Art Exhibition" />
-                    <div class="image-caption">My Art Exhibition</div>
+                        onclick="openFullscreen(this)"="My Art Exhibition" />
                 </div>
 
-                <!-- Media Coverage -->
+
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
                     <img src="assets/images/media1.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
-                    <div class="image-caption">Media Coverage</div>
+                        onclick="openFullscreen(this)"="Media Coverage" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
                     <img src="assets/images/media2.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
-                    <div class="image-caption">Media Coverage</div>
+                        onclick="openFullscreen(this)"="Media Coverage" />
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
                     <img src="assets/images/media3.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
-                    <div class="image-caption">Media Coverage</div>
+                        onclick="openFullscreen(this)"="Media Coverage" />
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
                     <img src="assets/images/media4.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
-                    <div class="image-caption">Media Coverage</div>
+                        onclick="openFullscreen(this)"="Media Coverage" />
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-4 gallery-col gallery-item media">
                     <img src="assets/images/media5.jpg" alt="Media Coverage" class="gallery-image fade-in"
-                        onclick="openFullscreen(this)" data-caption="Media Coverage" />
-                    <div class="image-caption">Media Coverage</div>
+                        onclick="openFullscreen(this)"="Media Coverage" />
                 </div>
             </div>
         </div>
     </div>
-    <div id="footer"></div>
+
+    <div class="div-block-28" id="footer" style="color: #f5f6fa;">
+        <div class="div-block-26 footer-flex">
+            <div class="footer-column">
+                <h3 class="footer-heading">Dance & Cultural <br> Engagement</h3>
+                <ul>
+                    <li><a href="https://www.natyatarangini.in/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-globe"></i> Natyatarangini Website</a>
+                    </li>
+                    <li><a href="https://www.instagram.com/natyatarangini/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-instagram"></i>
+                            Natyatarangini Instagram</a></li>
+                    <li><a href="https://x.com/NatyaTarangini" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-twitter-x"></i> Natyatarangini
+                            Twitter/X</a></li>
+                    <li><a href="https://www.instagram.com/rajaradhareddy/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-instagram"></i> Gurus Raja
+                            Radha Reddy - Instagram</a></li>
+                    <li><a href="https://x.com/TourismBiharGov/status/1598571454941253632" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-play-circle"></i> Kuchipudi Performance –
+                            Rajgir</a></li>
+                    <li><a href="https://x.com/TourismBiharGov/status/1598571454941253632" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-play-circle"></i> Natyatarangini Kuchipudi
+                            Performance 2022</a></li>
+                    <li><a href="https://www.linkedin.com/posts/activity-7270754444256968706-qajT/" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-linkedin"></i> Parampara Series At Kamani –
+                            LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading3">Social Impact &<br> Innovation</h3>
+                <ul>
+                    <li><a href="https://www.chakr.in/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-globe"></i> Chakr Innovation Website</a></li>
+                    <li><a href="https://www.facebook.com/chakrinnovation" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-facebook"></i> Chakr
+                            Innovation Facebook</a></li>
+                    <li><a href="https://x.com/ChakrInnovation" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-twitter-x"></i> Chakr Innovation
+                            Twitter/X</a></li>
+                    <li><a href="https://www.linkedin.com/company/chakr/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-linkedin"></i> Chakr
+                            Innovation LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/chakrinnovation/" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-instagram"></i> Chakr
+                            Innovation Instagram Project Prakash</a></li>
+                    <li><a href="https://www.projectprakash.org/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-globe"></i> Project Prakash
+                            Website</a></li>
+                    <li><a href="https://www.linkedin.com/posts/sohumeducation_educationprogram-summerimmersion-educationmatters-activity-7212770724938153984-yuw5/"
+                            target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i> Project Prakash –
+                            LinkedIn Post</a></li>
+                    <li><a href="https://www.unrulyarts.org/" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-globe"></i> Unruly Arts Website</a></li>
+                    <li><a href="https://www.linkedin.com/posts/activity-7309845515553144833-97-W/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE588BQBdXeNHNlQOXN8oJaey_UKkYlR_dI"
+                            target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i> Unruly Art /
+                            Masterstrokes – LinkedIn Post</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading2">Portfolio<br>Highlights</h3>
+                <ul>
+                    <li><a href="assets/images/shreshtapukar.jpg" target="_blank" rel="noopener noreferrer">Shrestha
+                            Puruskar 2022–23 – Certificate</a></li>
+                    <li><a href="dance.html?filter=g20" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-image"></i> G20 Participation Photo</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading4">Resume</h3>
+                <ul>
+                    <li><a href="assets/resume/resume.pdf" download="download" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i>
+                            Download Resume</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading1">Contact</h3>
+                <ul>
+                    <li><a href="mailto:contactus@gmail.com" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-envelope"></i>
+                            shambhavisharma312@gmail.com</a></li>
+                    <li><a href="https://www.linkedin.com/in/shambhavi-sharma" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-linkedin"></i>Shambhavi LinkedIn</a></li>
+                    <li><a href="tel:+91-8076437704"><i class="bi bi-telephone"></i> +91-8076437704 </a></li>
+                    <li><a href="https://www.instagram.com/shambhavi_sharma/"><i class="bi bi-instagram"></i>Shambhavi
+                            Instagram </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-10">
+
+            © 2025 Shambhavi Sharma. All rights reserved.
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="assets/js/unruly-art.js"></script>
 </body>
 <script>
-    let currentZoom = 1;
 
-    function zoomIn() {
-        if (currentZoom < 3) {
-            currentZoom += 0.25;
-            applyZoom();
-        }
-    }
-
-    function zoomOut() {
-        if (currentZoom > 0.5) {
-            currentZoom -= 0.25;
-            applyZoom();
-        }
-    }
-
-    function resetZoom() {
-        currentZoom = 1;
-        applyZoom();
-    }
-
-    function applyZoom() {
-        const image = document.getElementById('fullscreen-image');
-        image.style.transform = `scale(${currentZoom})`;
-    }
-
-    function filterGallery(category) {
-        const links = document.querySelectorAll('.filter-link');
-        links.forEach(link => {
-            link.classList.remove('active');
-            if (link.textContent.toLowerCase().includes(category) ||
-                (category === 'all' && link.textContent.includes('All'))) {
-                link.classList.add('active');
-            }
-        });
-
-        const items = document.querySelectorAll('.gallery-item');
-        let visibleCount = 0;
-        items.forEach(item => {
-            if (category === 'all') {
-                item.classList.remove('hide');
-                visibleCount++;
-            } else {
-                if (item.classList.contains(category)) {
-                    item.classList.remove('hide');
-                    visibleCount++;
-                } else {
-                    item.classList.add('hide');
-                }
-            }
-        });
-        items.forEach(item => {
-            item.classList.remove('col-lg-3', 'col-lg-4', 'col-lg-6', 'col-lg-12', 'offset-lg-0', 'offset-lg-3', 'offset-lg-4');
-            if (category === 'media' && !item.classList.contains('hide')) {
-                const mediaItems = document.querySelectorAll('.gallery-item.media:not(.hide)');
-                const mediaCount = mediaItems.length;
-                item.classList.add('col-lg-4');
-                if (mediaCount === 5) {
-                    const mediaArray = Array.from(mediaItems);
-                    const itemIndex = mediaArray.indexOf(item);
-                    if (itemIndex >= 3) {
-                        item.classList.remove('col-lg-4');
-                        item.classList.add('col-lg-6');
-                    }
-                }
-            } else {
-                item.classList.add('col-lg-4');
-            }
-        });
-
-        if (category !== 'all') {
-            const visibleItems = document.querySelectorAll(`.gallery-item.${category}`);
-
-            if (visibleCount === 1) {
-                visibleItems[0].classList.remove('col-lg-4');
-                visibleItems[0].classList.add('col-lg-6', 'offset-lg-3');
-            }
-            else if (visibleCount === 2) {
-                visibleItems.forEach(item => {
-                    item.classList.remove('col-lg-4');
-                    item.classList.add('col-lg-6');
-                });
-            }
-        }
-    }
-    let currentImages = [];
-    let currentIndex = 0;
-    function openFullscreen(img) {
-        resetZoom();
-
-        const visibleImages = Array.from(document.querySelectorAll('.gallery-item:not(.hide) .gallery-image'));
-        currentImages = visibleImages;
-        currentIndex = visibleImages.indexOf(img);
-        const overlay = document.getElementById('fullscreen-overlay');
-        const fullImg = document.getElementById('fullscreen-image');
-        const caption = document.getElementById('fullscreen-caption');
-        fullImg.src = img.src;
-        fullImg.alt = img.alt;
-        caption.textContent = img.dataset.caption;
-
-        overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeFullscreen() {
-        document.getElementById('fullscreen-overlay').style.display = 'none';
-        document.body.style.overflow = 'auto';
-        resetZoom();
-    }
-
-    function nextImage() {
-        if (currentImages.length <= 1) return;
-
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateFullscreenImage();
-        resetZoom();
-    }
-
-    function prevImage() {
-        if (currentImages.length <= 1) return;
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateFullscreenImage();
-        resetZoom();
-    }
-
-    function updateFullscreenImage() {
-        const fullImg = document.getElementById('fullscreen-image');
-        const caption = document.getElementById('fullscreen-caption');
-        const currentImg = currentImages[currentIndex];
-
-        fullImg.src = currentImg.src;
-        fullImg.alt = currentImg.alt;
-        caption.textContent = currentImg.dataset.caption;
-    }
-
-    document.addEventListener('keydown', function (e) {
-        if (document.getElementById('fullscreen-overlay').style.display === 'flex') {
-            if (e.key === 'ArrowRight') {
-                nextImage();
-            } else if (e.key === 'ArrowLeft') {
-                prevImage();
-            } else if (e.key === 'Escape') {
-                closeFullscreen();
-            } else if (e.key === '+' || e.key === '=') {
-                zoomIn();
-            } else if (e.key === '-' || e.key === '_') {
-                zoomOut();
-            } else if (e.key === '0') {
-                resetZoom();
-            }
-        }
-    });
 </script>
 
-</html>
-<script>
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data;
-        });
+<!-- <script>
+
     fetch('footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;
         });
-</script>
+</script> -->
+
+</html>
