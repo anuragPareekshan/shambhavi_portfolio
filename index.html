@@ -143,6 +143,38 @@
         </div>
     </div>
 
+    <div class="latest-news-container">
+        <div class="news-header">
+            <h2>Latest <u>Updates</u></h2>
+        </div>
+
+        <div class="news-content">
+            <div class="news-posts-section">
+                <div class="posts-container" id="postsContainer">
+                    <!-- Posts will be dynamically generated here -->
+                </div>
+
+                <!-- Navigation controls and indicators moved inside posts section -->
+                <div class="navigation-wrapper">
+                    <div class="navigation-controls">
+                        <button class="nav-btn" id="prevBtn" title="Previous Post">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <div class="current-post-indicator" id="postIndicator">
+                            <!-- Indicators will be dynamically generated here -->
+                        </div>
+                        <button class="nav-btn" id="nextBtn" title="Next Post">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <button class="nav-btn play-pause-btn" id="playPauseBtn" title="Play/Pause">
+                            <i class="bi bi-pause-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="div-block-28" id="footer" style="color: #f5f6fa;">
         <div class="div-block-26 footer-flex">
             <div class="footer-column">
@@ -231,13 +263,604 @@
                 </ul>
             </div>
         </div>
+        <div class="mt-11">
+            <a href="https://play.google.com/store/apps/details?id=com.danceforcause.shambhavi" target="_blank">Download
+                App Click here</a>
+        </div>
         <div class="mt-10">
-
             © 2025 Shambhavi Sharma. All rights reserved.
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        class EnhancedNewsContainer {
+            constructor() {
+                this.posts = [
+                    {
+                        type: 'news',
+                        platform: 'News Coverage',
+                        title: 'Mudras of Hope: Kuchipudi Therapy Transforms Lives',
+                        content: 'Shambhavi Sharma\'s innovative Kuchipudi therapy initiative brings hope and healing to underprivileged children in Delhi through the power of classical dance.',
+                        link: 'https://www.newsheads.in/lifestyle/news/mudras-of-hope-shambhavi-sharmas-kuchipudi-therapy-transforms-lives-of-underprivileged-kids-in-delhi-article-72642',
+                        embed: false
+                    },
+                    {
+                        type: 'instagram',
+                        platform: 'Instagram Post',
+                        title: 'Tiny toes, big devotion! 🩰',
+                        content: 'Our youngest disciples with just a year of training offered a heartwarming rendition of "Guru Brahma" at the 49th Annual Day.',
+                        link: 'https://www.instagram.com/p/DKq7TWESSUR/',
+                        embed: true,
+                        embedCode: '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DKq7TWESSUR/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>'
+                    },
+                    {
+                        type: 'linkedin',
+                        platform: 'LinkedIn Update',
+                        title: 'Professional Achievement Update',
+                        content: 'Latest professional milestone and achievements in cultural leadership and dance therapy initiatives.',
+                        link: 'https://www.linkedin.com/posts/activity-7337736935672627203-6Liy',
+                        embed: true
+                    },
+                    {
+                        type: 'youtube',
+                        platform: 'YouTube Performance',
+                        title: 'Kuchipudi Dance Performance 2019',
+                        content: '3rd Strings N Steps Youth Festival-Parampara 2019 Kuchipudi performance showcasing traditional artistry.',
+                        link: 'https://www.youtube.com/watch?v=ynRVSJOZqsY',
+                        embed: true,
+                        embedCode: '<iframe src="https://www.youtube.com/embed/ynRVSJOZqsY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:300px; border-radius:10px;"></iframe>'
+                    },
+                    {
+                        type: 'instagram',
+                        platform: 'Instagram Post',
+                        title: 'Mesmerizing Tarangam Performance 🌊',
+                        content: 'A beautiful Tarangam performance celebrating our anniversary, showcasing the unique Kuchipudi dance form performed on brass plate rims.',
+                        link: 'https://www.instagram.com/p/DKgm_IuSqoc/',
+                        embed: true,
+                        embedCode: '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DKgm_IuSqoc/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>'
+                    },
+                    {
+                        type: 'youtube',
+                        platform: 'YouTube Performance',
+                        title: 'International Classical Dance Festival 2019',
+                        content: 'Kuchipudi Dance performance by Shambhavi Sharma at the 4th International Classical Dance Festival 2019.',
+                        link: 'https://www.youtube.com/watch?v=Dd3AyFteHKY',
+                        embed: true,
+                        embedCode: '<iframe src="https://www.youtube.com/embed/Dd3AyFteHKY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:300px; border-radius:10px;"></iframe>'
+                    },
+                    {
+                        type: 'news',
+                        platform: 'Media Coverage',
+                        title: 'Hindi News Coverage',
+                        content: 'कालकाजी: शांभवी शर्मा ने नृत्यमृत पहल से वंचित बच्चों के लिए जगाई आशा की किरण - Local media coverage of dance therapy initiative.',
+                        link: 'https://public.app/video/sp_quhmgzglzf5il',
+                        embed: false
+                    },
+                    {
+                        type: 'youtube',
+                        platform: 'YouTube Performance',
+                        title: 'Nrityanjali International Dance Festival 2022',
+                        content: 'Kuchipudi dance Performance by Shambhavi Sharma at Nrityanjali International Dance Festival 2022.',
+                        link: 'https://www.youtube.com/watch?v=tgbcjJyiH8o',
+                        embed: true,
+                        embedCode: '<iframe src="https://www.youtube.com/embed/tgbcjJyiH8o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:300px; border-radius:10px;"></iframe>'
+                    }
+                ];
+
+                this.currentIndex = 0;
+                this.isPlaying = true;
+                this.intervalId = null;
+                this.displayDuration = 8000;
+
+                this.init();
+            }
+
+            init() {
+                this.createPosts();
+                this.createIndicators();
+                this.setupEventListeners();
+                this.startAutoPlay();
+
+                if (window.instgrm) {
+                    window.instgrm.Embeds.process();
+                } else {
+                    const script = document.createElement('script');
+                    script.async = true;
+                    script.src = '//www.instagram.com/embed.js';
+                    document.body.appendChild(script);
+                }
+            }
+
+            createPosts() {
+                const container = document.getElementById('postsContainer');
+                container.innerHTML = '';
+
+                this.posts.forEach((post, index) => {
+                    const postElement = document.createElement('div');
+                    postElement.className = `post-item ${index === 0 ? 'active' : ''}`;
+
+                    const iconClass = post.type === 'instagram' ? 'instagram-icon' :
+                        post.type === 'linkedin' ? 'linkedin-icon' :
+                            post.type === 'youtube' ? 'youtube-icon' : 'news-icon';
+
+                    const iconSymbol = post.type === 'instagram' ? 'bi-instagram' :
+                        post.type === 'linkedin' ? 'bi-linkedin' :
+                            post.type === 'youtube' ? 'bi-youtube' : 'bi-newspaper';
+
+                    postElement.innerHTML = `
+                        <div class="post-header">
+                            <div class="post-type-icon ${iconClass}">
+                                <i class="bi ${iconSymbol}"></i>
+                            </div>
+                            <div class="post-meta">
+                                <p class="post-platform">${post.platform}</p>
+                                <h4 class="post-title">${post.title}</h4>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            ${post.embed ?
+                            `<div class="post-embed">${post.embedCode}</div>` :
+                            `<p class="post-text">${post.content}</p>
+                                 <a href="${post.link}" target="_blank" class="post-link">
+                                     View Full Post <i class="bi bi-arrow-right"></i>
+                                 </a>`
+                        }
+                        </div>
+                    `;
+
+                    container.appendChild(postElement);
+                });
+            }
+
+            createIndicators() {
+                const indicatorContainer = document.getElementById('postIndicator');
+                indicatorContainer.innerHTML = '';
+
+                this.posts.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = `indicator-dot ${index === 0 ? 'active' : ''}`;
+                    dot.addEventListener('click', () => this.goToPost(index));
+                    indicatorContainer.appendChild(dot);
+                });
+            }
+
+            setupEventListeners() {
+                document.getElementById('prevBtn').addEventListener('click', () => this.previousPost());
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextPost());
+                document.getElementById('playPauseBtn').addEventListener('click', () => this.togglePlayPause());
+
+                const container = document.getElementById('postsContainer');
+                container.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                container.addEventListener('mouseleave', () => this.resumeAutoPlay());
+            }
+
+            goToPost(index) {
+                if (index === this.currentIndex) return;
+
+                const posts = document.querySelectorAll('.post-item');
+                const indicators = document.querySelectorAll('.indicator-dot');
+
+                posts[this.currentIndex].classList.remove('active');
+                indicators[this.currentIndex].classList.remove('active');
+
+                posts[this.currentIndex].classList.add('prev');
+
+                this.currentIndex = index;
+
+                setTimeout(() => {
+                    posts.forEach(post => post.classList.remove('prev'));
+                    posts[this.currentIndex].classList.add('active');
+                    indicators[this.currentIndex].classList.add('active');
+                }, 50);
+
+                if (this.posts[this.currentIndex].type === 'instagram' && window.instgrm) {
+                    setTimeout(() => window.instgrm.Embeds.process(), 100);
+                }
+            }
+
+            nextPost() {
+                const nextIndex = (this.currentIndex + 1) % this.posts.length;
+                this.goToPost(nextIndex);
+            }
+
+            previousPost() {
+                const prevIndex = (this.currentIndex - 1 + this.posts.length) % this.posts.length;
+                this.goToPost(prevIndex);
+            }
+
+            togglePlayPause() {
+                const btn = document.getElementById('playPauseBtn');
+                const icon = btn.querySelector('i');
+
+                if (this.isPlaying) {
+                    this.stopAutoPlay();
+                    icon.className = 'bi bi-play-fill';
+                    this.isPlaying = false;
+                } else {
+                    this.startAutoPlay();
+                    icon.className = 'bi bi-pause-fill';
+                    this.isPlaying = true;
+                }
+            }
+
+            startAutoPlay() {
+                this.stopAutoPlay();
+                this.intervalId = setInterval(() => {
+                    this.nextPost();
+                }, this.displayDuration);
+            }
+
+            stopAutoPlay() {
+                if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+            }
+
+            pauseAutoPlay() {
+                if (this.isPlaying) {
+                    this.stopAutoPlay();
+                }
+            }
+
+            resumeAutoPlay() {
+                if (this.isPlaying) {
+                    this.startAutoPlay();
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new EnhancedNewsContainer();
+        });
+    </script>
 </body>
 
 </html>
+
+<style>
+    .latest-news-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-header {
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        padding: 30px;
+        text-align: center;
+        /* background: linear-gradient(135deg, #667eea, #764ba2); */
+        color: #4d4d4d;;
+    }
+
+    .news-header h2 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .news-content {
+        display: block;
+        width: 100%;
+    }
+
+    .news-posts-section {
+        width: 100%;
+        padding: 30px;
+        background: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .posts-container {
+        height: 550px;
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .post-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+        padding: 30px;
+        background: white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .post-item.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .post-item.prev {
+        transform: translateX(-100%);
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .post-type-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: white;
+        font-size: 20px;
+    }
+
+    .instagram-icon {
+        background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    }
+
+    .linkedin-icon {
+        background: #0077B5;
+    }
+
+    .news-icon {
+        background: #FF6B35;
+    }
+
+    .youtube-icon {
+        background: #FF0000;
+    }
+
+    .post-meta {
+        flex: 1;
+    }
+
+    .post-platform {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #666;
+        margin: 0;
+    }
+
+    .post-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #333;
+        margin: 8px 0 0 0;
+        line-height: 1.4;
+    }
+
+    .post-content {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .post-embed {
+        width: 100%;
+        flex: 1;
+        border: none;
+        border-radius: 10px;
+        background: #f8f9fa;
+        min-height: 350px;
+    }
+
+    .post-embed iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .post-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #444;
+        margin-bottom: 25px;
+        flex: 1;
+    }
+
+    .post-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        padding: 15px 25px;
+        border: 2px solid #667eea;
+        border-radius: 30px;
+        align-self: flex-start;
+        font-size: 1rem;
+    }
+
+    .post-link:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .navigation-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navigation-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: white;
+        padding: 15px 25px;
+        border-radius: 50px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 18px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .nav-btn:hover {
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .play-pause-btn {
+        background: linear-gradient(135deg, #764ba2, #667eea);
+    }
+
+    .current-post-indicator {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 0 15px;
+    }
+
+    .indicator-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: rgba(102, 126, 234, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .indicator-dot.active {
+        background: #667eea;
+        transform: scale(1.3);
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    }
+
+    .indicator-dot:hover {
+        background: #667eea;
+        transform: scale(1.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+        .latest-news-container {
+            max-width: 95%;
+        }
+
+        .posts-container {
+            height: 450px;
+        }
+
+        .news-header h2 {
+            font-size: 2rem;
+        }
+
+        .post-item {
+            padding: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .posts-container {
+            height: 400px;
+        }
+
+        .post-item {
+            padding: 20px;
+        }
+
+        .news-posts-section {
+            padding: 20px;
+        }
+
+        .navigation-controls {
+            gap: 15px;
+            padding: 12px 20px;
+        }
+
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+            font-size: 16px;
+        }
+
+        .post-title {
+            font-size: 1.1rem;
+        }
+
+        .post-text {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 479px) {
+        .posts-container {
+            height: 350px;
+        }
+
+        .news-header {
+            padding: 20px;
+        }
+
+        .news-header h2 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .post-item {
+            padding: 15px;
+        }
+
+        .navigation-controls {
+            gap: 10px;
+            padding: 10px 15px;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+        }
+
+        .current-post-indicator {
+            padding: 0 10px;
+            gap: 8px;
+        }
+    }
+</style>
